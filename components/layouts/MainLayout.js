@@ -14,7 +14,7 @@ const Layout = ({ title, description, children,showBanner = false, ...rest }) =>
       <Seo subtitle={title} description={description} />
       <div className="flex flex-col w-full" {...rest}>
         <Header />
-        <div className="my-0 bg-pattern">
+        <div className="my-0 bg-white">
           <Toaster position="bottom-center" />
           {showBanner && <OfflineButton />}
           {children}</div>

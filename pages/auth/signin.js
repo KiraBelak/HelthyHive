@@ -5,20 +5,27 @@ import {
   getCsrfToken,
   getSession,
 } from "next-auth/react";
+import { Container } from "@mui/material";
 
 const SignInPage = ({ providers, csrfToken, errorMessage }) => {
   return (
-    <div>
-      <div className=" h-full min-h-full w-full flex justify-center items-center">
-        <div className=" flex flex-col justify-center items-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
-          <div className="mx-auto w-full max-w-sm lg:w-96">
+    <div className="min-h-screen w-screen box-border bg-gradient-to-br from-[#5D9F6B] via-[#3B7DE5] to-[#F097D1]">
+      
+      <div className="min-h-full min-w-screen flex justify-center items-center">
+        <div className=" flex flex-col w-full box-border justify-center items-center py-12 lg:flex-none">
+        <div className="relative text-white mb-24">
+              <h1 className="text-5xl" style={{fontFamily: 'Righteous'}}> Healty Hive</h1>
+                <h2 className="absolute right-0 text-m" style={{fontFamily: 'Roboto'}}>Crea la mejor versión de ti</h2>
+              </div>
+          <div className="box-border min-w-screen w-screen h-screen rounded-3xl px-4 bg-[#F0F0F0]">
             <div>
+             
               <h2 className="mt-6 text-3xl font-extrabold text-gray-900">
                 Iniciar Sesión
               </h2>
             </div>
 
-            <div className="mt-8">
+            <Container component="section">
               <div className="mt-6">
                 <form
                   method="post"
@@ -64,7 +71,7 @@ const SignInPage = ({ providers, csrfToken, errorMessage }) => {
                   </div>
                 </form>
               </div>
-            </div>
+            </Container>
           </div>
         </div>
       </div>

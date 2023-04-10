@@ -12,12 +12,20 @@ class MyDocument extends Document {
         <link rel="manifest" href="/manifest.json" />
         <link rel="apple-touch-icon" href="/logo.png" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;600&display=swap"
-          rel="stylesheet"
-        />
+        <link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
+<link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"></link>
+    
+          
 
-        <Head></Head>
+        <Head>
+        <link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
+<link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"></link>
+    
+        </Head>
         <body className="h-full">
           <Main />
           <NextScript />
