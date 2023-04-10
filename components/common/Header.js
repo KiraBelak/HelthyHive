@@ -19,8 +19,8 @@ const Header = () => {
   const { data: session } = useSession();
 
   return (
-    <Popover className="relative bg-gradient-to-r from-red-500 to-red-900
-">
+    <Popover className="relative bg-white">
+
       <div
         className="absolute inset-0 shadow z-20 pointer-events-none"
         aria-hidden="true"
@@ -28,15 +28,91 @@ const Header = () => {
       <div className="relative z-20">
         {/* DESKTOP */}
         <div className="max-w-7xl mx-auto flex justify-between items-center px-4 py-5 sm:px-6 sm:py-4 lg:px-8 md:justify-start md:space-x-10">
-          <div>
-            <Link href="/">
-              <a className="flex">
-                <img className="h-8 w-auto sm:h-10" src={logoUrl} alt="" />
-              </a>
-            </Link>
-          </div>
+        {session ? (
+                <Menu as="div" className="ml-3 relative">
+                  <div>
+                    <Menu.Button className="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-offset-2  focus:ring-white">
+                      <span className="sr-only">Open user menu</span>
+                      {session.user.image ? (
+                        <img
+                          className="h-8 w-8 rounded-full"
+                          src={session.user.image}
+                          alt=""
+                        />
+                      ) : (
+                        <img
+                          className="h-8 w-8 rounded-full"
+                          src={`https://avatars.dicebear.com/api/micah/${session.user.email}.svg?background=%23ffffff`}
+                          alt=""
+                        />
+                      )}
+                    </Menu.Button>
+                  </div>
+                  <Transition
+                    as={Fragment}
+                    enter="transition ease-out duration-100"
+                    enterFrom="transform opacity-0 scale-95"
+                    enterTo="transform opacity-100 scale-100"
+                    leave="transition ease-in duration-75"
+                    leaveFrom="transform opacity-100 scale-100"
+                    leaveTo="transform opacity-0 scale-95"
+                  >
+                    <Menu.Items className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-40">
+                      <Menu.Item>
+                        {({ active }) => (
+                          <Link href="/user/profile">
+                            <a
+                              className={classNames(
+                                active ? "bg-gray-100" : "",
+                                "block px-4 py-2 text-sm text-white"
+                              )}
+                            >
+                              Mi Cuenta
+                            </a>
+                          </Link>
+                        )}
+                      </Menu.Item>
+
+                      {session.user.roles.includes("admin") && (
+                        <Menu.Item>
+                          {({ active }) => (
+                            <Link href="/admin/dashboard">
+                              <a
+                                className={classNames(
+                                  active ? "bg-gray-100" : "",
+                                  "block px-4 py-2 text-sm text-gray-700"
+                                )}
+                              >
+                                Admin Dashboard
+                              </a>
+                            </Link>
+                          )}
+                        </Menu.Item>
+                      )}
+
+                      <Menu.Item>
+                        {({ active }) => (
+                          <div
+                            className={classNames(
+                              active ? "bg-gray-100" : "",
+                              "block px-4 py-2 text-sm text-white cursor-pointer"
+                            )}
+                            onClick={() => signOut()}
+                          >
+                            Salir
+                          </div>
+                        )}
+                      </Menu.Item>
+                    </Menu.Items>
+                  </Transition>
+                </Menu>
+              ) : (
+                <Link href="/auth/signin">
+                  <a>Sign In </a>
+                </Link>
+              )}
           <div className="-mr-2 -my-2 md:hidden">
-            <Popover.Button className="bg-gradient-to-r from-red-500 to-red-900
+            <Popover.Button className="bg-white
  rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
               <span className="sr-only">Open menu</span>
               <MenuIcon className="h-6 w-6" aria-hidden="true" />
@@ -180,89 +256,7 @@ const Header = () => {
                   </Link>
                 </div>
                 <div className="flex items-center md:ml-12">
-              {session ? (
-                <Menu as="div" className="ml-3 relative">
-                  <div>
-                    <Menu.Button className="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-offset-2  focus:ring-white">
-                      <span className="sr-only">Open user menu</span>
-                      {session.user.image ? (
-                        <img
-                          className="h-8 w-8 rounded-full"
-                          src={session.user.image}
-                          alt=""
-                        />
-                      ) : (
-                        <img
-                          className="h-8 w-8 rounded-full"
-                          src={`https://avatars.dicebear.com/api/micah/${session.user.email}.svg?background=%23ffffff`}
-                          alt=""
-                        />
-                      )}
-                    </Menu.Button>
-                  </div>
-                  <Transition
-                    as={Fragment}
-                    enter="transition ease-out duration-100"
-                    enterFrom="transform opacity-0 scale-95"
-                    enterTo="transform opacity-100 scale-100"
-                    leave="transition ease-in duration-75"
-                    leaveFrom="transform opacity-100 scale-100"
-                    leaveTo="transform opacity-0 scale-95"
-                  >
-                    <Menu.Items className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-40">
-                      <Menu.Item>
-                        {({ active }) => (
-                          <Link href="/user/profile">
-                            <a
-                              className={classNames(
-                                active ? "bg-gray-100" : "",
-                                "block px-4 py-2 text-sm text-white"
-                              )}
-                            >
-                              Mi Cuenta
-                            </a>
-                          </Link>
-                        )}
-                      </Menu.Item>
-
-                      {session.user.roles.includes("admin") && (
-                        <Menu.Item>
-                          {({ active }) => (
-                            <Link href="/admin/dashboard">
-                              <a
-                                className={classNames(
-                                  active ? "bg-gray-100" : "",
-                                  "block px-4 py-2 text-sm text-gray-700"
-                                )}
-                              >
-                                Admin Dashboard
-                              </a>
-                            </Link>
-                          )}
-                        </Menu.Item>
-                      )}
-
-                      <Menu.Item>
-                        {({ active }) => (
-                          <div
-                            className={classNames(
-                              active ? "bg-gray-100" : "",
-                              "block px-4 py-2 text-sm text-white cursor-pointer"
-                            )}
-                            onClick={() => signOut()}
-                          >
-                            Salir
-                          </div>
-                        )}
-                      </Menu.Item>
-                    </Menu.Items>
-                  </Transition>
-                </Menu>
-              ) : (
-                <Link href="/auth/signin">
-                  <a>Sign In </a>
-                </Link>
-              )}
+             
             </div>
                 <div className="-mr-2">
                   <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
