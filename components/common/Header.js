@@ -108,7 +108,7 @@ const Header = () => {
                 </Menu>
               ) : (
                 <Link href="/auth/signin">
-                  <a>Sign In </a>
+                  <a>Iniciar Sesión</a>
                 </Link>
               )}
           <div className="-mr-2 -my-2 md:hidden">
@@ -221,7 +221,7 @@ const Header = () => {
                 </Menu>
               ) : (
                 <Link href="/auth/signin">
-                  <a className="text-white">Sign In </a>
+                  <a className="text-white">Iniciar Sesión</a>
                 </Link>
               )}
             </div>
