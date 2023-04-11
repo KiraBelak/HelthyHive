@@ -2,10 +2,10 @@ import { NextSeo } from "next-seo";
 
 //EDIT ME PLEASE
 const data = {
-  siteName: "ProFit Cuu",
-  title: "ProFit Cuu",
-  description: "Pagina de ProFit Cuu",
-  url: "https://profit-eight.vercel.app/",
+  siteName: "Healthy Hive",
+  title: "Healthy Hive",
+  description: "Pagina de Healty Hive apoyados por Salud Digna",
+  url: "https://helthyhive.kirabel.com/",
   imageUrl: "/og.jpeg",
   twitter: "@KiraBelak",
 };

@@ -18,7 +18,7 @@ const Layout = ({ title, description, children,showBanner = false, ...rest }) =>
         <div className="my-0 bg-salud-white">
 
           <Toaster position="bottom-center" />
-          {showBanner && <OfflineButton />}
+          {<OfflineButton />}
           {children}</div>
         <Footer />
       </div>

@@ -1,11 +1,11 @@
 {
-    "theme_color": "#801e1e",
-    "background_color": "#801e1e",
+    "theme_color": "#5D9F6B",
+    "background_color": "#5D9F6B",
     "display": "standalone",
     "scope": "/",
     "start_url": "/",
-    "name": "Pro-Fit",
-    "short_name": "Pro-Fit",
+    "name": "Healthy Hive",
+    "short_name": "Healthy Hive",
     "icons": [
         {
             "src": "/icon-192x192.png",
