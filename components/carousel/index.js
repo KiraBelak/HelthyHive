@@ -16,7 +16,7 @@ const StoriesSlider = () => {
     };
 
     return (
-        <div className="w-full ml-10">
+        <div className="w-screen box-border overflow-hidden">
 <br></br>
 <h3 className="text-2xl font-bold text-gray-700"><span className="text-black">Novedades</span></h3>
 <br></br>
@@ -28,7 +28,7 @@ const StoriesSlider = () => {
                             imageSrc="https://source.unsplash.com/random/100x100"
                             altText="Story 1"
                             text="Story 1"
-                            className="mx-10"
+                            className="mx-10 box-border"
                         />
                     </div>
                     <div className="col-span-6">

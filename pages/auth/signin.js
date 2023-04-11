@@ -65,6 +65,8 @@ const SignInPage = ({ providers, csrfToken, errorMessage }) => {
                     </div>
                   </div>
 
+                  <h2 className="text-gray-500">Te enviaremos un correo para que puedas acceder a tu cuenta</h2>
+
                   {errorMessage && (
                     <div className="mt-3 text-sm text-red-600">
                       {errorMessage}
