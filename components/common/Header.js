@@ -99,14 +99,7 @@ const Header = () => {
               </div>
             </>
           )}
-      <div
-        className={classNames(
-          "bg-gray-100 block px-4 py-2 text-sm text-black cursor-pointer"
-        )}
-        onClick={() => signOut()}
-      >
-        Salir
-      </div>
+     
         </div>
       </div>
     </Popover>
