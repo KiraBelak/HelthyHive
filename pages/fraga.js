@@ -6,7 +6,7 @@ import React, { useState } from 'react';
 import Select from "react-select";
 
 
-export default function demo() {
+export default function Demo() {
 
     const [diseases, setDiseases] = useState([]);
 
