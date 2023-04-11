@@ -1,6 +1,6 @@
 import SocialIcon from "@/components/icons/Social";
 //EDIT ME PLEASE
-const copyrightLabel = `©${new Date().getFullYear()} ProFit & KiraBelak. All rights reserved.`;
+const copyrightLabel = `©${new Date().getFullYear()} Healthy Hive & Salud Digna. All rights reserved.`;
 const socialLink = [
   {
     name: "Facebook",
