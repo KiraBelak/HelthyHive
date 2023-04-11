@@ -6,24 +6,34 @@ import {
   getSession,
 } from "next-auth/react";
 import { Container } from "@mui/material";
+import React from 'react'
+
 
 const SignInPage = ({ providers, csrfToken, errorMessage }) => {
   return (
     <div className="min-h-screen w-screen box-border bg-gradient-to-br from-[#5D9F6B] via-[#3B7DE5] to-[#F097D1]">
-      
+
       <div className="min-h-full min-w-screen flex justify-center items-center">
         <div className=" flex flex-col w-full box-border justify-center items-center py-12 lg:flex-none">
-        <div className="relative text-white mb-24">
-              <h1 className="text-5xl" style={{fontFamily: 'Righteous'}}> Healty Hive</h1>
-                <h2 className="absolute right-0 text-m" style={{fontFamily: 'Roboto'}}>Crea la mejor versión de ti</h2>
+          <div className="relative text-white mb-2">
+            
+            <h1 className="text-5xl" style={{ fontFamily: 'Righteous' }}> Healty Hive</h1>
+            <h2 className="absolute right-0 text-m" style={{ fontFamily: 'Roboto' }}>Crea la mejor versión de ti</h2>
+            <br></br>
+            <div className="flex flex-col justify-center items-center mt-6">
+                <img src="/logo.png" alt="Descripción de la imagen" className="h-40" />
               </div>
+              <br></br>
+          </div>
           <div className="box-border min-w-screen w-screen h-screen rounded-3xl px-4 bg-[#F0F0F0]">
-            <div>
-             
+            <div className="text-center">
+       
               <h2 className="mt-6 text-3xl font-extrabold text-gray-900">
                 Iniciar Sesión
               </h2>
+        
             </div>
+
 
             <Container component="section">
               <div className="mt-6">
