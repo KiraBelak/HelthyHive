@@ -55,6 +55,7 @@ const Header = () => {
 
               <Link href="/">
                 <a className="absolute left-4 top-4 p-2 bg-white rounded-full shadow-md">
+
                   <svg
                     className="h-6 w-6 text-salud-black"
                     fill="none"
