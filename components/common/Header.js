@@ -4,7 +4,6 @@ import Link from "next/link";
 import { Popover, Transition, Menu } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import { useSession, signOut } from "next-auth/react";
-import classNames from "@/utils/classNames";
 import DefAvatar from "../users/avatar";
 
 //HEADER SETUP

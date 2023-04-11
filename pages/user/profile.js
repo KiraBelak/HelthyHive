@@ -7,6 +7,8 @@ import { useForm } from "react-hook-form";
 import toast, { Toaster } from "react-hot-toast";
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
+import classNames from "@/utils/classNames";
+
 
 const ProfilePage = () => {
   const {
