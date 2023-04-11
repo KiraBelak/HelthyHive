@@ -13,7 +13,7 @@ export default async function handler(req, res) {
         case "POST":
 
             if (existingProfile) {
-                return res.status(409).json({ message: "Este email ya está registrado" });
+                return res.status(404).json({ message: "Este email ya está registrado" });
             }
 
             const newProfile = {
@@ -37,8 +37,9 @@ export default async function handler(req, res) {
 
         case "GET":
 
-            if (!existingProfile) {
-                return res.status(409).json({ message: "Este email no ha sido registrado" });
+            if (existingProfile) {
+                return res.status(404).json({ message: "Este email no ha sido registrado" });
+                
             }
             const profiles = await profile.find({ email: query.email }).toArray();
             res.status(201).json(profiles);
@@ -46,7 +47,7 @@ export default async function handler(req, res) {
             break;
 
         case "PUT":
-            if (!existingProfile) {
+            if (existingProfile) {
                 return res.status(409).json({ message: "Este email no ha sido registrado" });
             }
 
