@@ -1,55 +1,87 @@
 // src/components/Post/index.js
+import React from 'react';
 
-import React, { Component } from "react";
-
-
-class Post extends Component {
-
-    render() {
-
-        return <article className="Post" >
-
-            <header>
-
-                <div className="Post-user" >
-
-                    <div className="Post-user-profilepicture">
-
-                        <img src="/creadores/kaleb.jpg" alt="John D. Veloper" />
-
-                    </div>
-
-                    <div className="Post-user-nickname">
-
-                        <span>John Doe</span>
-
-                    </div>
-
+const Post = () => {
+    return (
+        <div className="max-w-md w-full mx-auto bg-white rounded-md shadow-md overflow-hidden">
+            <div className="flex items-center justify-between px-4 py-3 bg-gray-100">
+                <div className="flex items-center">
+                    <img
+                        className="w-10 h-10 rounded-full mr-2"
+                        src="https://source.unsplash.com/random/100x100"
+                        alt="User avatar"
+                    />
+                    <span className="text-sm font-medium text-gray-900">username</span>
                 </div>
-
-            </header>
-
-            <div className="Post-image">
-
-                <div className="Post-image-bg">
-
-                    <img alt="Icon Living" src="/images/ios/inicio.png" />
-                    
-
+                <div className="flex items-center">
+                    <svg
+                        className="h-5 w-5 text-gray-500"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                    >
+                        <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                        />
+                        <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                        />
+                        <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                        />
+                    </svg>
+                    <span className="ml-1 text-xs font-medium text-gray-500">20 min</span>
                 </div>
-
             </div>
-
-            <div className="Post-caption">
-
-                <strong>John D. Veloper </strong> Loving Educative!
-
+            <img
+                className="w-full"
+                src="https://source.unsplash.com/random/600x600"
+                alt="Post image"
+            />
+            <div className="px-4 py-3">
+                <div className="text-sm font-medium text-gray-900 mb-2">username</div>
+                <div className="text-sm text-gray-800">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi nulla
+                    nemo, cumque corporis veritatis repellat dolor ea est minus dolorem
+                    quasi explicabo architecto deleniti fugiat, exercitationem itaque
+                    delectus veniam iure!
+                </div>
             </div>
+            <div className="px-4 py-2 bg-gray-100">
+                <div className="flex items-center">
+                    <svg
+                        className="h-6 w-6 text-gray-600 mr-1"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                    >
+                        <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M5 10l7-7m0 0l7 7m-7-7v18"
+                        />
+                    </svg>
+                    <span className="text-sm font-medium text-gray-600">
+                        2.5k likes
+                    </span>
+                </div>
+            </div>
+           
+            </div>
+   
 
-        </article>;
+    );
+};
 
-    }
-
-}
 
 export default Post;
