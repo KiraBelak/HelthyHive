@@ -43,7 +43,9 @@ export default function Home({ isConnected }) {
     <MainLayout>
       <div >
         <div className="flex justify-center space-x-4 mt-2">
-   <Carousel />
+
+
+          <Carousel />
 
 
         </div>
