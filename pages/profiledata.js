@@ -9,6 +9,14 @@ import Select from "react-select";
 export default function Demo() {
 
     const [diseases, setDiseases] = useState([]);
+    const [email, setEmail] = useState("");
+    const [age, setAge] = useState("");
+    const [weight, setWeight] = useState("");
+    const [height, setHeight] = useState("");
+    const [imc, setImc] = useState("");
+    const [disease, setDisease] = useState("");
+    const [regimen, setRegimen] = useState("balanced");
+    const [sedentary, setSedentary] = useState(true);
 
     const handleDiseasesChange = (selectedOptions) => {
         const selectedDiseases = selectedOptions.map((option) => option.value);
@@ -16,11 +24,11 @@ export default function Demo() {
     };
 
     const options = [
-        { value: "disease1", label: "Diabetes" },
-        { value: "disease2", label: "Hipertensión" },
-        { value: "disease3", label: "Enfermedad cardiovascular" },
-        { value: "disease4", label: "Anemia" },
-        { value: "disease5", label: "Osteoporosis" },
+        { value: "Diabetes", label: "Diabetes" },
+        { value: "Hipertensión", label: "Hipertensión" },
+        { value: "Cardiovascular", label: "Enfermedad cardiovascular" },
+        { value: "Anemia", label: "Anemia" },
+        { value: "Osteoporosis", label: "Osteoporosis" },
     ];
 
 
@@ -108,7 +116,7 @@ export default function Demo() {
 
                         <br></br>
                     </div>
-                    <div className="box-border min-w-screen w-screen h-screen rounded-3xl px-4 bg-[#F0F0F0]">
+                    <div className="box-border  min-w-screen w-screen h-screen rounded-3xl px-4 bg-[#F0F0F0]">
                         <div className="text-center">
 
                             <h2 className="mt-6 text-3xl font-extrabold text-gray-900">
@@ -137,11 +145,7 @@ export default function Demo() {
                                                 type="hidden"
 
                                             />
-                                            <input
-                                                id="email"
-                                                //name="email"
-                                                type="email"
-                                                required
+                                            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)}
                                                 className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                                             />
 
@@ -156,12 +160,10 @@ export default function Demo() {
                                             Edad
                                         </label>
 
-                                        <input
-                                            id="age"
-                                            name="age"
-                                            type="number"
-                                            required
+
+                                        <input type="number" value={age} onChange={(e) => setAge(e.target.value)}
                                             className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+
                                         />
                                     </div>
 
@@ -169,15 +171,12 @@ export default function Demo() {
                                         <label htmlFor="diseases" className="block font-medium text-gray-700">
                                             Enfermedades
                                         </label>
-                                        <Select
-                                            id="diseases"
-                                            isMulti
-                                            options={options}
-                                            onChange={handleDiseasesChange}
+                                        <Select  id="diseases" name="diseases" options={options} isMulti onChange={handleDiseasesChange}
                                             value={diseases.map((disease) => ({
                                                 value: disease,
                                                 label: disease,
                                             }))}
+                                            
                                         />
                                     </div>
                                     <div id="weight">
@@ -188,13 +187,15 @@ export default function Demo() {
                                             Peso
                                         </label>
 
-                                        <input
-                                            id="weight"
-                                            name="weight"
-                                            type="number"
-                                            required
+
+                                        <input 
+                                        type="number" 
+                                        value={weight} 
+                                        onChange={(e) => setWeight(e.target.value)}
                                             className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+
                                         />
+
                                     </div>
                                     <div id="height">
                                         <label
@@ -204,16 +205,18 @@ export default function Demo() {
                                             Altura
                                         </label>
 
-                                        <input
-                                            id="height"
-                                            name="height"
-                                            type="number"
-                                            required
-                                            className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                                        
+
+                                        <input 
+                                        type="number"
+                                         value={height} 
+                                         onChange={(e) => setHeight(e.target.value)}
+                                         className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                                         />
+
                                     </div>
 
-                                    <h2 className="text-gray-500">Te enviaremos un correo para que puedas acceder a tu cuenta</h2>
+                                    <h2 className="text-gray-500">Nosotros valoramos tu privacidad y nunca compartiremos tus datos con terceros</h2>
 
 
 
@@ -222,7 +225,7 @@ export default function Demo() {
                                             type="submit"
                                             className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                                         >
-                                            Iniciar Sesión
+                                            Guardar
                                         </button>
                                     </div>
                                 </form>
