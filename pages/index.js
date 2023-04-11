@@ -120,9 +120,9 @@ const handleOpen = () => {
         <br></br>
         <Post ></Post>
         <br></br>
-        <OfflineButton />
 
       </div>
+        <OfflineButton />
     </MainLayout>
   );
 }
