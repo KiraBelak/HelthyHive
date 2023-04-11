@@ -27,16 +27,11 @@ const StoriesSlider = () => {
                         <StoryImage
                             imageSrc="https://source.unsplash.com/random/100x100"
                             altText="Story 1"
-                            text="Story 1"
                             className="mx-10 box-border"
                         />
-                    </div>
-                    <div className="col-span-6">
-                        <div className="mt-1 flex justify-between text-center">
-                            <h3 className="text-xl text-black">
-                                hola mundo
-                            </h3>
-                        </div>
+                        <h3 className="text-xl text-black">
+                            hola mundo
+                        </h3>
                     </div>
                 </div>
 
@@ -45,71 +40,69 @@ const StoriesSlider = () => {
                         <StoryImage
                             imageSrc="https://source.unsplash.com/random/100x100"
                             altText="Story 1"
-                            text="Story 1"
-                            className="mx-10"
+                            className="mx-10 box-border"
                         />
+                             <h3 className="text-xl text-black">
+                            hola mundo
+                        </h3>
                     </div>
-                    <div className="col-span-6">
-                        <div className="mt-1 flex justify-between text-center">
-                            <h3 className="text-xl text-black">
-                                hola mundo
-                            </h3>
-                        </div>
-                    </div>
-                </div>  <div className="flex justify-between">
+                </div>
+                <div className="flex justify-between">
                     <div className="col-span">
                         <StoryImage
                             imageSrc="https://source.unsplash.com/random/100x100"
                             altText="Story 1"
-                            text="Story 1"
-                            className="mx-10"
+                            className="mx-10 box-border"
                         />
+                             <h3 className="text-xl text-black">
+                            hola mundo
+                        </h3>
                     </div>
-                    <div className="col-span-6">
-                        <div className="mt-1 flex justify-between text-center">
-                            <h3 className="text-xl text-black">
-                                hola mundo
-                            </h3>
-                        </div>
-                    </div>
-                </div>  <div className="flex justify-between">
+                </div>
+                <div className="flex justify-between">
                     <div className="col-span">
                         <StoryImage
                             imageSrc="https://source.unsplash.com/random/100x100"
                             altText="Story 1"
-                            text="Story 1"
-                            className="mx-10"
+                            className="mx-10 box-border"
                         />
+                             <h3 className="text-xl text-black">
+                            hola mundo
+                        </h3>
                     </div>
-                    <div className="col-span-6">
-                        <div className="mt-1 flex justify-between text-center">
-                            <h3 className="text-xl text-black">
-                                hola mundo
-                            </h3>
-                        </div>
-                    </div>
-                </div>  <div className="flex justify-between">
+                </div>
+                <div className="flex justify-between">
                     <div className="col-span">
                         <StoryImage
                             imageSrc="https://source.unsplash.com/random/100x100"
                             altText="Story 1"
-                            text="Story 1"
-                            className="mx-10"
+                            className="mx-10 box-border"
                         />
+                             <h3 className="text-xl text-black">
+                            hola mundo
+                        </h3>
                     </div>
-                    <div className="col-span-6">
-                        <div className="mt-1 flex justify-between text-center">
-                            <h3 className="text-xl text-black">
-                                hola mundo
-                            </h3>
-                        </div>
+                </div>
+                <div className="flex justify-between">
+                    <div className="col-span">
+                        <StoryImage
+                            imageSrc="https://source.unsplash.com/random/100x100"
+                            altText="Story 1"
+                            className="mx-10 box-border"
+                        />
+                             <h3 className="text-xl text-black">
+                            hola mundo
+                        </h3>
                     </div>
                 </div>
 
-
-
             </Slider>
+            <br></br>
+            <h3 className="text-2xl font-bold text-gray-700"><span className="text-black">Descubre</span></h3>
+  
         </div>
+
+        
 
     );
 };

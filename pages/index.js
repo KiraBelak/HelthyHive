@@ -51,7 +51,7 @@ export default function Home({ isConnected }) {
   {
     title: 'Retos',
     icon: faBasketball,
-    link: ""
+    link: "/reto"
   },
   {
     title: 'Perfil',
