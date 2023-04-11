@@ -38,7 +38,7 @@ console.log(session)
         <div className="max-w-7xl mx-auto flex justify-around items-center px-4 py-5 sm:px-6 sm:py-4 lg:px-8 md:justify-start md:space-x-10">
         {session ? (
           <>
-               <DefAvatar nombre={session.user.name} image={session.user.image? session.user.image : `https://avatars.dicebear.com/api/micah/${session.user.email}.svg?background=%23ffffff`}/>
+                  <DefAvatar nombre={session.user.name} image={session.user.image? session.user.image : `https://avatars.dicebear.com/api/micah/${session.user.email}.svg?background=%23ffffff`}/>
               <div className="flex justify-center items-center">
                <h2 className="text-2xl ml-4 font-extrabold text-salud-black" style={{fontFamily: 'Roboto'}}>Hola {session.user.name? session.user.name: "sin nombre" }!</h2>
                 <h2 className="mt-24 pt-2 absolute" style={{fontFamily:'Roboto'}} > Puedes obtener estrellas</h2>
@@ -132,7 +132,7 @@ console.log(session)
           <div className="flex justify-center items-center">
                <h2 className="text-2xl font-extrabold text-salud-black" style={{fontFamily: 'Roboto'}}>Hola Invitado!</h2>
                <Link href="/auth/signin">
-               <a className="text-xl stroke-black hover:text-salud-accent2 text-salud-accent mt-16 absolute font-bold" style={{fontFamily:'Roboto'}}>Inicia sesión</a>
+               <a className="text-xl stroke-black hover:text-salud-accent2 text-salud-accent2 mt-16 absolute font-bold" style={{fontFamily:'Roboto'}}>Inicia sesión</a>
                </Link>
                {/* <h2 className="mt-16 absolute" style={{fontFamily:'Roboto'}} > Puedes obtener estrellas</h2>
                 <h2 className="mt-28 absolute" style={{fontFamily:'Roboto'}} > y canjearlas por productos</h2> */}

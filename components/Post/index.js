@@ -4,14 +4,18 @@ import React, { useState } from 'react';
 const Post = () => {
     const [likes, setLikes] = useState(0);
     return (
+
+
+
         <div className="max-w-md w-full mx-auto bg-white rounded-md shadow-md overflow-hidden">
+
+
             <div className="flex items-center justify-between px-4 py-3 bg-gray-100">
                 <div className="flex items-center">
                     <img
                         className="w-10 h-10 rounded-full mr-2"
                         src="https://source.unsplash.com/random/100x100"
-                        alt="User avatar"
-                    />
+                        alt="User avatar" />
                     <span className="text-sm font-medium text-gray-900">username</span>
                 </div>
                 <div className="flex items-center">
@@ -25,20 +29,17 @@ const Post = () => {
                             strokeLinecap="round"
                             strokeLinejoin="round"
                             strokeWidth={2}
-                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                        />
+                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                         <path
                             strokeLinecap="round"
                             strokeLinejoin="round"
                             strokeWidth={2}
-                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                        />
+                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                         <path
                             strokeLinecap="round"
                             strokeLinejoin="round"
                             strokeWidth={2}
-                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                        />
+                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                     </svg>
                     <span className="ml-1 text-xs font-medium text-gray-500">20 min</span>
                 </div>
@@ -46,8 +47,7 @@ const Post = () => {
             <img
                 className="w-full"
                 src="https://source.unsplash.com/random/600x600"
-                alt="Post image"
-            />
+                alt="Post image" />
             <div className="px-4 py-3">
                 <div className="text-sm font-medium text-gray-900 mb-2">username</div>
                 <div className="text-sm text-gray-800">
