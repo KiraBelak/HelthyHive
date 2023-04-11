@@ -17,9 +17,9 @@ const StoriesSlider = () => {
 
     return (
         <div className="w-screen box-border overflow-hidden">
-<br></br>
-<h3 className="text-2xl font-bold text-gray-700"><span className="text-black">Novedades</span></h3>
-<br></br>
+            <br></br>
+            <h3 className="text-2xl font-bold text-gray-700"><span className="text-black">Novedades</span></h3>
+            <br></br>
             <Slider {...settings}>
 
                 <div className="flex justify-between">

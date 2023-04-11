@@ -1,7 +1,8 @@
 // src/components/Post/index.js
-import React from 'react';
+import React, { useState } from 'react';
 
 const Post = () => {
+    const [likes, setLikes] = useState(0);
     return (
         <div className="max-w-md w-full mx-auto bg-white rounded-md shadow-md overflow-hidden">
             <div className="flex items-center justify-between px-4 py-3 bg-gray-100">
@@ -56,30 +57,22 @@ const Post = () => {
                     delectus veniam iure!
                 </div>
             </div>
+
+            {/* likes */}
+
             <div className="px-4 py-2 bg-gray-100">
                 <div className="flex items-center">
-                    <svg
-                        className="h-6 w-6 text-gray-600 mr-1"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                    >
-                        <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M5 10l7-7m0 0l7 7m-7-7v18"
-                        />
-                    </svg>
+                    <button onClick={() => setLikes(likes + 1)}>
+                        <svg className={`h-6 w-6 text-gray-600 mr-1 ${likes > 0 ? 'text-yellow-500' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} fill={likes > 0 ? 'yellow' : 'none'} d="M12 2l3.09 6.63 7.01 1.02-5.09 4.95 1.2 7.0L12 19.24l-6.22 3.37 1.2-7.0L1.9 9.65l7.01-1.02L12 2z" />
+                        </svg>
+                    </button>
                     <span className="text-sm font-medium text-gray-600">
-                        2.5k likes
+                        {likes} {likes === 1 ? 'like' : 'likes'}
                     </span>
                 </div>
             </div>
-           
-            </div>
-   
-
+        </div>
     );
 };
 
