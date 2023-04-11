@@ -29,6 +29,9 @@ const StoriesSlider = () => {
                             altText="Story 1"
                             className="mx-10 box-border"
                         />
+                        <h3 className="text-xl text-black">
+                            hola mundo
+                        </h3>
                     </div>
                 </div>
 
@@ -39,6 +42,9 @@ const StoriesSlider = () => {
                             altText="Story 1"
                             className="mx-10 box-border"
                         />
+                             <h3 className="text-xl text-black">
+                            hola mundo
+                        </h3>
                     </div>
                 </div>
                 <div className="flex justify-between">
@@ -48,6 +54,9 @@ const StoriesSlider = () => {
                             altText="Story 1"
                             className="mx-10 box-border"
                         />
+                             <h3 className="text-xl text-black">
+                            hola mundo
+                        </h3>
                     </div>
                 </div>
                 <div className="flex justify-between">
@@ -57,6 +66,9 @@ const StoriesSlider = () => {
                             altText="Story 1"
                             className="mx-10 box-border"
                         />
+                             <h3 className="text-xl text-black">
+                            hola mundo
+                        </h3>
                     </div>
                 </div>
                 <div className="flex justify-between">
@@ -66,6 +78,9 @@ const StoriesSlider = () => {
                             altText="Story 1"
                             className="mx-10 box-border"
                         />
+                             <h3 className="text-xl text-black">
+                            hola mundo
+                        </h3>
                     </div>
                 </div>
                 <div className="flex justify-between">
@@ -75,11 +90,19 @@ const StoriesSlider = () => {
                             altText="Story 1"
                             className="mx-10 box-border"
                         />
+                             <h3 className="text-xl text-black">
+                            hola mundo
+                        </h3>
                     </div>
                 </div>
 
             </Slider>
+            <br></br>
+            <h3 className="text-2xl font-bold text-gray-700"><span className="text-black">Descubre</span></h3>
+  
         </div>
+
+        
 
     );
 };
