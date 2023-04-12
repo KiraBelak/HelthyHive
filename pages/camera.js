@@ -26,9 +26,10 @@ const CameraPage = () => {
       <div className="relative w-full h-full">
         <Camera
           onTakePhoto={handleTakePhoto}
-          idealFacingMode={FACING_MODES.USER}
+          idealFacingMode={FACING_MODES.ENVIRONMENT}
           isFullscreen={true}
           isMaxResolution={true}
+          isImageMirror={false}
         />
         {imageData && (
           <img
