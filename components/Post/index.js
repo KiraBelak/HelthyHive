@@ -1,17 +1,50 @@
 // src/components/Post/index.js
 import React, { useState } from 'react';
 
-const Post = (props) => {
+const Post = ({data}) => {
+    const { title, txt, tiempo, name, img } = data;
+    //funcion para sacar hace cuanto se hizo el post
+    const haceCuanto = (fecha) => {
+        console.log(fecha);
+        // conseguir formatear la fecha
+        const pub = new Date(fecha);
+        const ahora = new Date();
+        const tiempo = ahora.getTime() - pub.getTime();
+        console.log("el tiempo es",tiempo)
+        const segundos = Math.floor(tiempo / 1000);
+        const minutos = Math.floor(segundos / 60);
+        const horas = Math.floor(minutos / 60);
+        const dias = Math.floor(horas / 24);
+        const meses = Math.floor(dias / 30);
+        const anios = Math.floor(meses / 12);
+        if (anios > 0) {
+            return `${anios} años`;
+        } else if (meses > 0) {
+            return `${meses} meses`;
+        } else if (dias > 0) {
+            return `${dias} dias`;
+        } else if (horas > 0) {
+            return `${horas} horas`;
+        } else if (minutos > 0) {
+            return `${minutos} minutos`;
+        } else if (segundos > 0) {
+            return `${segundos} segundos`;
+        } else {
+            return 'Ahora';
+        }
+    };
+
     const [likes, setLikes] = useState(0);
     return (
         <div className="max-w-md w-full mx-auto bg-white rounded-md shadow-md overflow-hidden">
             <div className="flex items-center justify-between px-4 py-3 bg-gray-100">
+                {/* Empieza el usario y el tiempo */}
                 <div className="flex items-center">
                     <img
                         className="w-10 h-10 rounded-full mr-2"
-                        src="https://source.unsplash.com/random/100x100"
+                        src={img}
                         alt="User avatar" />
-                    <span className="text-sm font-medium text-gray-900">username</span>
+                    <span className="text-sm font-medium text-gray-900">{name}</span>
                 </div>
                 <div className="flex items-center">
                     <svg
@@ -36,20 +69,18 @@ const Post = (props) => {
                             strokeWidth={2}
                             d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                     </svg>
-                    <span className="ml-1 text-xs font-medium text-gray-500">20 min</span>
+                    <span className="ml-1 text-xs font-medium text-gray-500">{haceCuanto(tiempo)}</span>
                 </div>
+                {/* Termina el usario y el tiempo */}
             </div>
-            <img
+            {/* {props.img && <img
                 className="w-full"
                 src="https://source.unsplash.com/random/600x600"
-                alt="Post image" />
+                alt="Post image" />} */}
             <div className="px-4 py-3">
-                <div className="text-sm font-medium text-gray-900 mb-2">username</div>
+                <div className="text-sm font-medium text-gray-900 mb-2">{title}</div>
                 <div className="text-sm text-gray-800">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi nulla
-                    nemo, cumque corporis veritatis repellat dolor ea est minus dolorem
-                    quasi explicabo architecto deleniti fugiat, exercitationem itaque
-                    delectus veniam iure!
+                    {txt}
                 </div>
             </div>
 
