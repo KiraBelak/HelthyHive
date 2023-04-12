@@ -24,7 +24,7 @@ const ProgressBarWithTitle = () => {
 
   return (
     <div className="container mx-auto my-8">
-      <h1 className="text-2xl font-bold text-center mb-4">Reto de la semana</h1>
+      <h1 className="text-2xl font-bold text-center mb-4">Reto de la semanaaa</h1>
     </div>
   );
 };

@@ -1,15 +1,53 @@
 import { useState } from "react";
 import classnames from "classnames";
+import { useEffect } from "react";
+import axios from "axios";
 
 const CheckboxList = () => {
-    const [items, setItems] = useState([
-        { id: 1, title: "Establece metas realistas y específicas para la semana", completed: false },
-        { id: 2, title: "Planifica tus entrenamientos con anticipación", completed: false },
-        { id: 3, title: "Haz un seguimiento de tu progreso", completed: false },
-        { id: 4, title: "Aliméntate saludablemente", completed: false },
-        { id: 5, title: "Descansa al menos 6 horas", completed: false },
-        { id: 6, title: "Motívate ", completed: false },
-    ]);
+    const [items, setItems] = useState([]);
+    const [title,setTitle] = useState("");
+    const [subtitle,setSubtitle] = useState("");
+    const [description,setDescription] = useState("");
+
+
+
+
+    useEffect(() => {
+        async function getChallenger() {
+            let info;
+            const resp = await axios.get(`/api/challenges`).then(response => {
+                console.log("encontrado", response);
+                info = response.data;
+                console.log(info);
+                //items = info[2].tasks;
+                const setdata = info[6];
+                setItems(setdata.tasks);
+                setDescription(setdata.description);
+                setSubtitle(setdata.subtitle);
+
+                console.log(items);
+
+            }).catch(err => {
+                console.log("No a sido registrado este usuario");
+            });
+
+        }
+
+     getChallenger();
+
+    }, []);
+
+    /*
+     const [items, setItems] = useState([
+         { id: 1, title: "Establece metas realistas y específicas para la semana", completed: false },
+         { id: 2, title: "Planifica tus entrenamientos con anticipación", completed: false },
+         { id: 3, title: "Haz un seguimiento de tu progreso", completed: false },
+         { id: 4, title: "Aliméntate saludablemente", completed: false },
+         { id: 5, title: "Descansa al menos 6 horas", completed: false },
+         { id: 6, title: "Motívate ", completed: false },
+     ]);
+  */
+    
 
     const [numSelected, setNumSelected] = useState(0);
 
@@ -46,9 +84,9 @@ const CheckboxList = () => {
         <div>
             <h1 className="text-2xl font-bold text-gray-700">Actividades a realizar</h1>
             <div className="mt-4">
-                <h3 className="text-lg font-bold mb-2">Gym por una semana</h3>
+                <h3 className="text-lg font-bold mb-2"> {subtitle} </h3>
                 <p className="text-gray-500">
-                    Realiza estas tareas para cumplir con tu objetivo de hacer ejercicio en el gimnasio por una semana.
+                    {description}
                 </p>
                 <div className="h-4 mt-2 bg-gray-200 rounded-full">
                     <div
