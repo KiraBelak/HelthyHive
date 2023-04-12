@@ -37,21 +37,15 @@ const Header = () => {
                     : `https://avatars.dicebear.com/api/micah/${session.user.email}.svg?background=%23ffffff`
                 }
               />
-              <div className="flex justify-center items-center">
-                <h2
-                  className="text-2xl ml-4 font-extrabold text-salud-black"
-                  style={{ fontFamily: "Roboto" }}
-                >
-                  Hola {session.user.name ? session.user.name : "sin nombre"}!
-                </h2>
-                <h2
-                  className="mt-24 pt-2 absolute"
-                  style={{ fontFamily: "Roboto" }}
-                >
-                  {" "}
-                  Puedes obtener estrellas
-                </h2>
-              </div>
+           <div className="flex flex-col items-center justify-center">
+  <h2 className="text-2xl font-extrabold text-salud-white mb-4" style={{ fontFamily: "Roboto" }}>
+    Hola {session.user.name ? session.user.name : "sin nombre"}!
+  </h2>
+  <h2 className="text-lg font-bold text-salud-white" style={{ fontFamily: "Roboto" }}>
+    Puedes obtener estrellas
+  </h2>
+</div>
+
 
               <Link href="/">
                 <a className="absolute left-4 top-4 p-2 bg-white rounded-full shadow-md">
@@ -81,7 +75,7 @@ const Header = () => {
               </Link>
               <div className="flex justify-center items-center">
                 <h2
-                  className="text-2xl font-extrabold text-salud-black"
+                  className="text-2xl font-extrabold text-salud-white"
                   style={{ fontFamily: "Roboto" }}
                 >
                   Hola Invitado!
