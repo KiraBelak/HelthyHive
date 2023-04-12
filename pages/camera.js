@@ -12,7 +12,7 @@ const CameraPage = () => {
 
   const handleCameraFacingModeChange = () => {
     setCameraFacingMode(
-      cameraFacingMode === FACING_MODES.USER
+      cameraFacingMode == FACING_MODES.USER
         ? FACING_MODES.ENVIRONMENT
         : FACING_MODES.USER
     );
