@@ -50,7 +50,7 @@ export default function Home({ isConnected }) {
   {
     title: 'Tomar foto',
     icon: faCamera,
-    link: ""
+    link: "/camera"
   },
   {
     title: 'Retos',
@@ -127,7 +127,7 @@ export default function Home({ isConnected }) {
                   {item.icon === faCamera ? (
                     <Link href={item.link}>
                       <a>
-                        <FontAwesomeIcon icon={item.icon} style={{ color: '#E5B54B' }} className="w-full h-full text-gray-500 group-hover:text-blue-500" />
+                        <FontAwesomeIcon icon={item.icon} style={{ color: '#E5B54B' }} className="w-full h-full text-gray-500 group-hover:text-blue-500"/>
                       </a>
                     </Link>
                   ) : (item.action ? (
