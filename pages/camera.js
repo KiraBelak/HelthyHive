@@ -20,7 +20,7 @@ const CameraPage = () => {
         {isCameraOpen ? (
           <Camera
             onTakePhoto={(dataUri) => handleTakePhoto(dataUri)}
-            idealFacingMode={window && window.innerWidth > 768 ? 'user' : 'environment'}
+            idealFacingMode={window && window.innerWidth > 768 ? 'environment' : 'user'}
           />
         ) : (
           <button
