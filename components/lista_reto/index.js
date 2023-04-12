@@ -27,15 +27,15 @@ const CheckboxList = () => {
 
     let progressBarColor;
     if (completionPercentage === 0) {
-      progressBarColor = "bg-white";
+        progressBarColor = "bg-white";
     } else if (completionPercentage > 0 && completionPercentage < 20) {
-      progressBarColor = "bg-red-500";
+        progressBarColor = "bg-red-500";
     } else if (completionPercentage >= 20 && completionPercentage < 70) {
-      progressBarColor = "bg-yellow-500";
+        progressBarColor = "bg-yellow-500";
     } else {
-      progressBarColor = "bg-green-500";
+        progressBarColor = "bg-green-500";
     }
-  
+
 
     const progressBarClasses = classnames("h-full rounded-full transition-all duration-500 ease-out", {
         "bg-gray-200": completionPercentage === 0,
@@ -51,11 +51,11 @@ const CheckboxList = () => {
                     Realiza estas tareas para cumplir con tu objetivo de hacer ejercicio en el gimnasio por una semana.
                 </p>
                 <div className="h-4 mt-2 bg-gray-200 rounded-full">
-          <div
-            className={`h-full rounded-full transition-all duration-500 ease-out ${progressBarColor}`}
-            style={{ width: `${completionPercentage}%` }}
-          ></div>
-        </div>
+                    <div
+                        className={`h-full rounded-full transition-all duration-500 ease-out ${progressBarColor}`}
+                        style={{ width: `${completionPercentage}%` }}
+                    ></div>
+                </div>
                 <p className="mt-2 text-gray-700">
                     Completado: {numSelected} / {items.length}
                 </p>

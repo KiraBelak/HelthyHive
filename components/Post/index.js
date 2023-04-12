@@ -1,15 +1,10 @@
 // src/components/Post/index.js
 import React, { useState } from 'react';
 
-const Post = () => {
+const Post = (props) => {
     const [likes, setLikes] = useState(0);
     return (
-
-
-
         <div className="max-w-md w-full mx-auto bg-white rounded-md shadow-md overflow-hidden">
-
-
             <div className="flex items-center justify-between px-4 py-3 bg-gray-100">
                 <div className="flex items-center">
                     <img
