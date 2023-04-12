@@ -3,7 +3,7 @@ import Camera from 'react-camera';
 import { useRouter } from 'next/router';
 
 const CameraPage = () => {
-  const [isCameraOpen, setIsCameraOpen] = useState(false);
+  const [isCameraOpen, setIsCameraOpen] = useState(true);
   const router = useRouter();
 
   const handleTakePhoto = (dataUri) => {
