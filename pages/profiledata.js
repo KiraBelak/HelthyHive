@@ -9,13 +9,12 @@ import Select from "react-select";
 export default function Demo() {
 
     const [diseases, setDiseases] = useState([]);
-    const [email, setEmail] = useState("");
+    const [email, setEmail] = useState(""); // AQUI HAY QUE ASIGNAR EL EMAIL CUANDO YA TOCA EL LINK DE VERIFICACION
     const [age, setAge] = useState("");
     const [weight, setWeight] = useState("");
     const [height, setHeight] = useState("");
     const [imc, setImc] = useState("");
-    const [disease, setDisease] = useState("");
-    const [regimen, setRegimen] = useState("balanced");
+    const [regimen, setRegimen] = useState("");
     const [sedentary, setSedentary] = useState(true);
 
     const handleDiseasesChange = (selectedOptions) => {
@@ -23,6 +22,43 @@ export default function Demo() {
         setDiseases(selectedDiseases);
     };
 
+    const handleSubmit = (event) => {
+        event.preventDefault();
+
+
+        const imcValue = (weight / (height * height)).toFixed(2);
+
+        imc = imcValue;
+
+        sedentary = Boolean(sedentary);
+       
+        console.log({
+            diseases,
+            email,
+            age,
+            weight,
+            height,
+            imc,
+            regimen,
+            sedentary,
+        });
+
+        const data = {
+            diseases,
+            email,
+            age,
+            weight,
+            height,
+            imc,
+            regimen,
+            sedentary
+        }
+
+        postProfile(data);
+        
+    };
+
+    //no tocar es parte del funcionamiento del campo Enfermedades
     const options = [
         { value: "Diabetes", label: "Diabetes" },
         { value: "Hipertensión", label: "Hipertensión" },
@@ -32,18 +68,10 @@ export default function Demo() {
     ];
 
 
-    async function postProfile() {
-        const data = {
-            email: "linux36@live.com",
-            age: 30,
-            weight: 70,
-            height: 170,
-            imc: 24.2,
-            disease: "none",
-            regimen: "balanced",
-            sedentary: true
-        };
-
+    //Funcionando 
+    async function postProfile(data) {
+        
+    
         const resp = await axios.post("/api/profile", data).then(response => {
             console.log("EXITO!", response);
 
@@ -56,6 +84,7 @@ export default function Demo() {
 
     }
 
+    //PRUEBA
     async function getProfiles() {
         const email = "linux39@live.com";
         let info;
@@ -71,6 +100,7 @@ export default function Demo() {
         console.log(info);
     }
 
+    //PRUEBA
     async function editProfiles() {
         const email = "linux34@live.com";
         const data2 = {
@@ -94,16 +124,16 @@ export default function Demo() {
 
     }
 
+    /*
     useEffect(() => {
 
         //postProfile();
 
         //editProfiles();
-        getProfiles();
+        //getProfiles();
     }, []);
-
+*/
     return (
-
         <div className="min-h-screen w-screen box-border bg-gradient-to-br from-[#5D9F6B] via-[#3B7DE5] to-[#F097D1]">
 
             <div className="min-h-full min-w-screen flex justify-center items-center">
@@ -131,6 +161,7 @@ export default function Demo() {
                                 <form
                                     method="post"
                                     className="space-y-6"
+                                    onSubmit={handleSubmit}
                                 >
                                     <div>
                                         <label
@@ -143,9 +174,10 @@ export default function Demo() {
                                             <input
                                                 //name="csrfToken"
                                                 type="hidden"
+                                                required
 
                                             />
-                                            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)}
+                                            <input type="email" disabled value={email} onChange={(e) => setEmail(e.target.value)}
                                                 className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                                             />
 
@@ -161,7 +193,8 @@ export default function Demo() {
                                         </label>
 
 
-                                        <input type="number" value={age} onChange={(e) => setAge(e.target.value)}
+                                        <input type="number"
+                                            required value={age} onChange={(e) => setAge(e.target.value)}
                                             className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
 
                                         />
@@ -171,55 +204,84 @@ export default function Demo() {
                                         <label htmlFor="diseases" className="block font-medium text-gray-700">
                                             Enfermedades
                                         </label>
-                                        <Select  id="diseases" name="diseases" options={options} isMulti onChange={handleDiseasesChange}
+                                        <Select required id="diseases" name="diseases" options={options} isMulti onChange={handleDiseasesChange}
                                             value={diseases.map((disease) => ({
                                                 value: disease,
                                                 label: disease,
                                             }))}
-                                            
+
                                         />
                                     </div>
-                                    <div id="weight">
+                                    <div className="grid grid-cols-2 gap-4">
+                                        <div>
+                                            <label htmlFor="weight" className="block text-sm font-medium text-gray-700">
+                                                Peso (kg)
+                                            </label>
+                                            <input
+                                                type="number"
+                                                name="weight"
+                                                id="weight"
+                                                autoComplete="weight"
+                                                value={weight}
+                                                onChange={(e) => setWeight(e.target.value)}
+                                                required
+                                                className="w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                                            />
+                                        </div>
+                                        <div>
+                                            <label htmlFor="height" className="block text-sm font-medium text-gray-700">
+                                                Altura (cm)
+                                            </label>
+                                            <input
+                                                type="number"
+                                                name="height"
+                                                id="height"
+                                                autoComplete="height"
+                                                value={height}
+                                                onChange={(e) => setHeight(e.target.value)}
+                                                required
+                                                className="w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                                            />
+                                        </div>
+                                    </div>
+                                    
+
+                                    <div id="regimen">
                                         <label
-                                            htmlFor="weight"
+                                            htmlFor="regimen"
                                             className="block text-sm font-medium text-gray-700"
                                         >
-                                            Peso
+                                            Régimen alimenticio
                                         </label>
 
 
-                                        <input 
-                                        type="number" 
-                                        value={weight} 
-                                        onChange={(e) => setWeight(e.target.value)}
+                                        <input
+                                            type="text"
+                                            value={regimen}
+                                            required
+                                            onChange={(e) => setRegimen(e.target.value)}
                                             className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-
                                         />
 
                                     </div>
-                                    <div id="height">
+                                    <div id="sedentary">
                                         <label
-                                            htmlFor="height"
+                                            htmlFor="sedentary"
                                             className="block text-sm font-medium text-gray-700"
                                         >
-                                            Altura
+                                            Sedentarismo
                                         </label>
 
-                                        
-
-                                        <input 
-                                        type="number"
-                                         value={height} 
-                                         onChange={(e) => setHeight(e.target.value)}
-                                         className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                                        <input
+                                            type="checkbox"
+                                            value={sedentary}
+                                            required
+                                            onChange={(e) => setSedentary(e.target.value)}
                                         />
 
                                     </div>
-
+                                   
                                     <h2 className="text-gray-500">Nosotros valoramos tu privacidad y nunca compartiremos tus datos con terceros</h2>
-
-
-
                                     <div>
                                         <button
                                             type="submit"
