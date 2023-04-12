@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Camera from 'react-camera';
 import { useRouter } from 'next/router';
 
-const CameraPage = () => {
+const Camara = () => {
   const [isCameraOpen, setIsCameraOpen] = useState(true);
   const router = useRouter();
 
@@ -35,4 +35,4 @@ const CameraPage = () => {
   );
 };
 
-export default CameraPage;
+export default Camara;
