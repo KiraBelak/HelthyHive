@@ -1,35 +1,53 @@
-import React, { useState } from 'react';
-import Camera from 'react-camera';
-import { useRouter } from 'next/router';
+import { useState } from "react";
+import Camera, { FACING_MODES } from "react-html5-camera-photo";
+import "react-html5-camera-photo/build/css/index.css";
 
 const CameraPage = () => {
-  const [isCameraOpen, setIsCameraOpen] = useState(true);
-  const router = useRouter();
+  const [imageData, setImageData] = useState(null);
+  const [cameraFacingMode, setCameraFacingMode] = useState(FACING_MODES.USER);
 
   const handleTakePhoto = (dataUri) => {
-    // Aquí puedes enviar la foto al servidor o hacer lo que necesites con ella
-    console.log('La foto ha sido tomada:', dataUri);
+    setImageData(dataUri);
+  };
 
-    // Redirige al usuario a la página de inicio después de tomar la foto
-    router.push('/');
+  const handleCameraFacingModeChange = () => {
+    setCameraFacingMode(
+      cameraFacingMode === FACING_MODES.USER
+        ? FACING_MODES.ENVIRONMENT
+        : FACING_MODES.USER
+    );
   };
 
   return (
-    <div className="min-h-screen flex justify-center items-center">
-      <div className="max-w-md w-full">
-        {isCameraOpen ? (
-          <Camera
-            onTakePhoto={(dataUri) => handleTakePhoto(dataUri)}
-            idealFacingMode={window && window.innerWidth > 768 ? 'environment' : 'user'}
+    <div className="flex flex-col items-center justify-center h-screen">
+      <div className="relative w-80 h-80">
+        <Camera
+          onTakePhoto={handleTakePhoto}
+          idealFacingMode={cameraFacingMode}
+          isFullscreen={true}
+          isMaxResolution={true}
+        />
+        {imageData && (
+          <img
+            className="absolute inset-0 object-cover"
+            src={imageData}
+            alt="Captured"
           />
-        ) : (
-          <button
-            onClick={() => setIsCameraOpen(true)}
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-          >
-            Abrir cámara
-          </button>
         )}
+      </div>
+      <div className="mt-6 space-x-4">
+        <button
+          className="px-4 py-2 bg-blue-600 text-white rounded"
+          onClick={handleTakePhoto}
+        >
+          Tomar foto
+        </button>
+        <button
+          className="px-4 py-2 bg-gray-400 text-white rounded"
+          onClick={handleCameraFacingModeChange}
+        >
+          Cambiar cámara
+        </button>
       </div>
     </div>
   );
