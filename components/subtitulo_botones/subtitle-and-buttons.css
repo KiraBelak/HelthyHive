@@ -1,0 +1,14 @@
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.subtitle {
+    margin-top: 10px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #4a5568;
+    text-align: center;
+}

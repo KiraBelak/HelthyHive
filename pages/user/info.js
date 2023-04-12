@@ -130,6 +130,9 @@ const ProfilePage = () => {
                   )}
                 </div>
 
+
+
+
                 <div className="col-span-6 sm:col-span-3">
                   <label
                     htmlFor="email"
@@ -153,9 +156,36 @@ const ProfilePage = () => {
                     </p>
                   )}
                 </div>
-              </div>
 
-              <h3 className="text-4xl font-bold text-left text-gray-800 mt-4">
+                <div className="col-span-6 sm:col-span-3">
+                  <label
+                    htmlFor="phone"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Telefono
+                  </label>
+                  <input
+                    type="number"
+                    name="phone"
+                    id="phone"
+                    autoComplete="phone"
+                    {...register("phone", {
+                      required: "Telefono es requerido",
+                    })}
+                    className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                  />
+                  {errors.weight && (
+                    <p className="text-red-500 text-xs italic">
+                      {errors.weight.message}
+                    </p>
+                  )}
+                </div>
+
+
+
+
+              </div>
+              <h3 className="text-4xl font-bold text-center text-gray-800 mt-4">
                 Datos
               </h3>
               <div className="grid grid-cols-6 gap-6 px-4 py-5 bg-white sm:p-6">

@@ -5,66 +5,28 @@ const Table = () => {
         <div className="flex flex-col mt-4">
             <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                    <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                        <table className="min-w-full divide-y divide-gray-200">
-                            <thead className="bg-gray-50">
+                    <div className="shadow overflow-hidden sm:rounded-lg">
+                        <table className="w-full table-auto border-collapse">
+                            <thead className="bg-gray-100">
                                 <tr>
                                     <th
                                         scope="col"
-                                        className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                                        className="px-4 py-2 font-medium text-gray-500 uppercase tracking-wider text-left text-center"
                                     >
-                                        Nombre
+                                        Nivel
                                     </th>
                                     <th
                                         scope="col"
-                                        className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                                        className="px-4 py-2 font-medium text-gray-500 uppercase tracking-wider text-left text-center"
                                     >
-                                        Puntaje
+                                        Estrellas
                                     </th>
                                 </tr>
                             </thead>
-                            <tbody className="bg-white divide-y divide-gray-200">
-                                <tr>
-                                    <td className="px-6 py-4 whitespace-nowrap">
-                                        <div className="flex items-center">
-                                            <div className="ml-4">
-                                                <div className="text-sm font-medium text-gray-900">
-                                                    John Doe
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td className="px-6 py-4 whitespace-nowrap">
-                                        <div className="text-sm text-gray-900">100</div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td className="px-6 py-4 whitespace-nowrap">
-                                        <div className="flex items-center">
-                                            <div className="ml-4">
-                                                <div className="text-sm font-medium text-gray-900">
-                                                    Jane Doe
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td className="px-6 py-4 whitespace-nowrap">
-                                        <div className="text-sm text-gray-900">85</div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td className="px-6 py-4 whitespace-nowrap">
-                                        <div className="flex items-center">
-                                            <div className="ml-4">
-                                                <div className="text-sm font-medium text-gray-900">
-                                                    Bob Smith
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td className="px-6 py-4 whitespace-nowrap">
-                                        <div className="text-sm text-gray-900">75</div>
-                                    </td>
+                            <tbody>
+                                <tr className="bg-gray-50">
+                                    <td className="px-4 py-2 font-medium text-gray-900 text-center align-middle">Oro</td>
+                                    <td className="px-4 py-2 text-gray-900 text-center align-middle">100</td>
                                 </tr>
                             </tbody>
                         </table>
