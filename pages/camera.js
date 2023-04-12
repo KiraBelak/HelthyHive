@@ -1,6 +1,9 @@
 import { useState } from "react";
 import Camera, { FACING_MODES } from "react-html5-camera-photo";
 import "react-html5-camera-photo/build/css/index.css";
+// importar camara del componente camaron
+import Camara from "../components/camaron";
+
 
 const CameraPage = () => {
   const [imageData, setImageData] = useState(null);
@@ -21,6 +24,7 @@ const CameraPage = () => {
   return (
     <div className="flex flex-col items-center justify-center h-screen">
       <div className="relative w-full h-full">
+      <Camara />
         <Camera
           onTakePhoto={handleTakePhoto}
           idealFacingMode={cameraFacingMode}
@@ -54,3 +58,5 @@ const CameraPage = () => {
 };
 
 export default CameraPage;
+
+
