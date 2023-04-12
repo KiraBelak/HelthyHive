@@ -8,6 +8,7 @@ import toast, { Toaster } from "react-hot-toast";
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import classNames from "@/utils/classNames";
+import {signOut} from "next-auth/react";
 
 
 const ProfilePage = () => {
