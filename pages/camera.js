@@ -19,8 +19,8 @@ const CameraPage = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
-      <div className="relative w-80 h-80">
+    <div className="flex flex-col items-center justify-center md:w-full h-screen">
+      <div className="relative">
         <Camera
           onTakePhoto={handleTakePhoto}
           idealFacingMode={cameraFacingMode}
