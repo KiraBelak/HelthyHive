@@ -7,8 +7,11 @@ import { faMagnifyingGlass, faReceipt, faCamera, faBasketball, faUser } from '@f
 import Post from "../components/Post";
 import Carousel from "../components/carousel";
 import "material-icons/iconfont/material-icons.css";
-import { useState } from 'react';
-
+import { useState, useEffect } from 'react';
+import PostForm from "../components/postform";
+import axios from "axios";
+import { useSession, signOut } from "next-auth/react";
+import toast, { Toaster } from "react-hot-toast";
 //SERVER EXAMPLE OF MONGODB CONNECTION
 export async function getServerSideProps(context) {
   try {
@@ -31,8 +34,9 @@ export async function getServerSideProps(context) {
 }
 
 export default function Home({ isConnected }) {
-  console.log("isConnected", isConnected);
   const [abre, setAbre] = useState(true);
+  const [post, setPost] = useState(false);
+  const [posts, setPosts] = useState([]);
   const menu = [{
     title: 'Feed',
     icon: faMagnifyingGlass,
@@ -41,12 +45,12 @@ export default function Home({ isConnected }) {
   {
     title: 'Foro',
     icon: faReceipt,
-    link: ""
+    action: () => setPost(!post),
   },
   {
     title: 'Tomar foto',
     icon: faCamera,
-    link: ""
+    link: "/camera"
   },
   {
     title: 'Retos',
@@ -64,9 +68,48 @@ export default function Home({ isConnected }) {
     setAbre(!abre);
   };
 
+  const tiempo= new Date();
+  const { data: session } = useSession();
+
+
+
+  const handleSubmit = (data) => {
+    
+    //hacer post a la api
+    const { title, txt } = data;
+    const owner=(session.user.email)
+    console.log("el user es",session.user.name)
+    const name=(session.user.name)
+    const img=(session.user.image)
+  const res= axios.post('/api/publicaciones', {
+    owner,
+      title,
+      txt,
+      tiempo,
+      name,
+      img
+    }).then((res) => {
+      if (res.status === 200) {
+        toast.success("Publicacion creada");
+        setPost(false);
+      } else {
+        toast.error("Error al crear publicacion");
+      }
+    })
+
+  }
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await axios.get('/api/publicaciones');
+      setPosts(result.data.reverse());
+    };
+    fetchData();
+  }, []);
+
 
   return (
     <MainLayout>
+            <Toaster position="bottom-center" />
       {abre ? (
         <div onClick={handleOpen} className="flex min-h-[15px] justify-center bg-salud-primary rounded-b-3xl space-x-4 text-white">
           <svg width="24" className="w-1/6" height="50" viewBox="0 0 24 13" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -84,15 +127,19 @@ export default function Home({ isConnected }) {
                   {item.icon === faCamera ? (
                     <Link href={item.link}>
                       <a>
-                        <FontAwesomeIcon icon={item.icon} style={{ color: '#E5B54B' }} className="w-full h-full text-gray-500 group-hover:text-blue-500" />
+                        <FontAwesomeIcon icon={item.icon} style={{ color: '#E5B54B' }} className="w-full h-full text-gray-500 group-hover:text-blue-500"/>
                       </a>
                     </Link>
+                  ) : (item.action ? (
+                    <FontAwesomeIcon icon={item.icon} style={{ color: '#fff' }} className="w-full h-full text-gray-500 group-hover:text-blue-500" onClick={item.action} />
                   ) : (
                     <Link href={item.link}>
                       <a>
                         <FontAwesomeIcon icon={item.icon} style={{ color: '#fff' }} className="w-full h-full text-gray-500 group-hover:text-blue-500" />
                       </a>
                     </Link>
+                  )
+                    
                   )}
                 </div>
               </div>
@@ -101,7 +148,15 @@ export default function Home({ isConnected }) {
           }
         </div>
       )}
-
+        {post ? (
+          <div className="flex justify-center">
+            <div className="w-full max-w-2xl">
+              <PostForm handleSubmit={handleSubmit} />
+              </div>
+              </div>
+              ) : (
+                null
+              )}
       <div >
         <div className="flex justify-center">
           <div className="w-full max-w-2xl">
@@ -110,7 +165,12 @@ export default function Home({ isConnected }) {
         </div>
 
         <br></br>
-        <Post ></Post>
+        {posts.map((post, i) => {
+          return (
+            <Post key={i} data={posts[i]} />
+          )
+        }
+        )}
         <br></br>
       </div>
       <OfflineButton />
