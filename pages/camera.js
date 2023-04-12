@@ -5,6 +5,7 @@ import "react-html5-camera-photo/build/css/index.css";
 const CameraPage = () => {
   const [imageData, setImageData] = useState(null);
   const [cameraFacingMode, setCameraFacingMode] = useState(FACING_MODES.USER);
+  const [isImageMirror, setIsImageMirror] = useState(false);
 
   const handleTakePhoto = (dataUri) => {
     setImageData(dataUri);
@@ -12,20 +13,23 @@ const CameraPage = () => {
 
   const handleCameraFacingModeChange = () => {
     setCameraFacingMode(
-      cameraFacingMode == FACING_MODES.USER
+      cameraFacingMode === FACING_MODES.USER
         ? FACING_MODES.ENVIRONMENT
         : FACING_MODES.USER
     );
+
+    setIsImageMirror((prevIsImageMirror) => !prevIsImageMirror);
   };
 
   return (
-    <div className="flex flex-col items-center justify-center md:w-full h-screen">
-      <div className="relative">
+    <div className="flex flex-col items-center justify-center h-screen">
+      <div className="relative w-full h-full">
         <Camera
           onTakePhoto={handleTakePhoto}
           idealFacingMode={cameraFacingMode}
           isFullscreen={true}
           isMaxResolution={true}
+          isImageMirror={isImageMirror}
         />
         {imageData && (
           <img
