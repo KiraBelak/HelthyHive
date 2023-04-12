@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import toast, { Toaster } from "react-hot-toast";
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
+import Table from "../../components/table_perfil";
 
 const ProfilePage = () => {
   const {
@@ -90,34 +91,35 @@ const ProfilePage = () => {
   return (
     <AccountLayout>
       <Toaster position="bottom-center" />
+
       <div className="w-full flex justify-center">
-        <div className="relative bg-white w-full ">
+
+
+
+        <div className="relative bg-white w-full">
+        <Table/>
+          <h3 className="text-4xl font-bold text-center text-gray-800 mt-4">
+            Mi información
+          </h3>
           <form onSubmit={handleSubmit(submitHandler)}>
             <div className="shadow sm:rounded-md sm:overflow-hidden">
+
               <div className="bg-white py-6 px-4 space-y-6 sm:p-6">
-                <div>
-                  <h3 className="text-lg leading-6 font-medium text-gray-900">
-                    Información Personal
-                  </h3>
-                  <p className="mt-1 text-sm text-gray-500">
-                    Use a permanent address where you can receive mail.
-                  </p>
-                </div>
-                </div>
+
                 <div className="col-span-6 sm:col-span-3">
                   <label
-                    htmlFor="height"
+                    htmlFor="nombre"
                     className="block text-sm font-medium text-gray-700"
                   >
-                    Altura
+                    Nombre completo
                   </label>
                   <input
-                    type="number"
-                    name="height"
-                    id="height"
-                    autoComplete="height"
-                    {...register("height", {
-                      required: "Altura es requerida",
+                    type="text"
+                    name="nombre"
+                    id="nombre"
+                    autoComplete="nombre"
+                    {...register("nombre", {
+                      required: "nombre es requerido",
                     })}
                     className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                   />
@@ -127,6 +129,61 @@ const ProfilePage = () => {
                     </p>
                   )}
                 </div>
+
+                <div className="col-span-6 sm:col-span-3">
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    autoComplete="email"
+                    {...register("email", {
+                      required: "email es requerido",
+                    })}
+                    className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                  />
+                  {errors.weight && (
+                    <p className="text-red-500 text-xs italic">
+                      {errors.weight.message}
+                    </p>
+                  )}
+                </div>
+              </div>
+
+              <h3 className="text-4xl font-bold text-left text-gray-800 mt-4">
+                Datos
+              </h3>
+              <div className="grid grid-cols-6 gap-6 px-4 py-5 bg-white sm:p-6">
+
+                <div className="col-span-6 sm:col-span-3">
+                  <label
+                    htmlFor="edad"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Edad
+                  </label>
+                  <input
+                    type="number"
+                    name="edad"
+                    id="edad"
+                    autoComplete="edad"
+                    {...register("edad", {
+                      required: "edad es requerida",
+                    })}
+                    className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                  />
+                  {errors.height && (
+                    <p className="text-red-500 text-xs italic">
+                      {errors.height.message}
+                    </p>
+                  )}
+                </div>
+
                 <div className="col-span-6 sm:col-span-3">
                   <label
                     htmlFor="weight"
@@ -151,6 +208,72 @@ const ProfilePage = () => {
                   )}
                 </div>
               </div>
+
+
+
+
+
+
+
+
+
+
+              <div className="grid grid-cols-6 gap-6 px-4 py-5 bg-white sm:p-6">
+
+                <div className="col-span-6 sm:col-span-3">
+                  <label
+                    htmlFor="height"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Altura
+                  </label>
+                  <input
+                    type="number"
+                    name="height"
+                    id="height"
+                    autoComplete="height"
+                    {...register("height", {
+                      required: "Altura es requerida",
+                    })}
+                    className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                  />
+                  {errors.height && (
+                    <p className="text-red-500 text-xs italic">
+                      {errors.height.message}
+                    </p>
+                  )}
+                </div>
+
+                <div className="col-span-6 sm:col-span-3">
+                  <label
+                    htmlFor="imc"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    IMC
+                  </label>
+                  <input
+                    type="text"
+                    name="imc"
+                    id="imc"
+                    autoComplete="imc"
+                    {...register("imc", {
+                      required: "imc es requerido",
+                    })}
+                    className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                  />
+                  {errors.weight && (
+                    <p className="text-red-500 text-xs italic">
+                      {errors.weight.message}
+                    </p>
+                  )}
+                </div>
+              </div>
+
+
+
+
+
+
               <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
                 <button
                   type="submit"
@@ -178,15 +301,18 @@ const ProfilePage = () => {
                       ></path>
                     </svg>
                   ) : (
+
                     ""
                   )}
                   Guardar
                 </button>
               </div>
-          </form>
             </div>
+          </form>
         </div>
-      
+
+      </div>
+
     </AccountLayout>
   );
 };
