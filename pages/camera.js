@@ -4,7 +4,7 @@ import "react-html5-camera-photo/build/css/index.css";
 
 const CameraPage = () => {
   const [imageData, setImageData] = useState(null);
-  const [cameraFacingMode, setCameraFacingMode] = useState(FACING_MODES.USER);
+  const [cameraFacingMode, setCameraFacingMode] = useState(FACING_MODES.ENVIRONMENT);
   const [isImageMirror, setIsImageMirror] = useState(false);
 
   const handleTakePhoto = (dataUri) => {
