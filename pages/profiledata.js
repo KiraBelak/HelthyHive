@@ -124,14 +124,15 @@ export default function Demo() {
 
     }
 
+    /*
     useEffect(() => {
 
         //postProfile();
 
         //editProfiles();
-        getProfiles();
+        //getProfiles();
     }, []);
-
+*/
     return (
         <div className="min-h-screen w-screen box-border bg-gradient-to-br from-[#5D9F6B] via-[#3B7DE5] to-[#F097D1]">
 
