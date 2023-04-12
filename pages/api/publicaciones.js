@@ -10,7 +10,6 @@ export default async function handler (req, res){
     switch (method){
              //crear una publicacion nueva para el usuario especificado y la fecha y hora actual
         case "POST":
-            console.log(body);
             const {owner,title,txt,tiempo,name,img} = body;
             const result = await events.insertOne({
                 owner,

@@ -2,15 +2,13 @@
 import React, { useState } from 'react';
 
 const Post = ({data}) => {
-    const { title, txt, tiempo, name, img } = data;
+    const { title, txt, tiempo, name, img,image } = data;
     //funcion para sacar hace cuanto se hizo el post
     const haceCuanto = (fecha) => {
-        console.log(fecha);
         // conseguir formatear la fecha
         const pub = new Date(fecha);
         const ahora = new Date();
         const tiempo = ahora.getTime() - pub.getTime();
-        console.log("el tiempo es",tiempo)
         const segundos = Math.floor(tiempo / 1000);
         const minutos = Math.floor(segundos / 60);
         const horas = Math.floor(minutos / 60);
@@ -73,10 +71,10 @@ const Post = ({data}) => {
                 </div>
                 {/* Termina el usario y el tiempo */}
             </div>
-            {/* {props.img && <img
+            {image && <img
                 className="w-full"
                 src="https://source.unsplash.com/random/600x600"
-                alt="Post image" />} */}
+                alt="Post image" />}
             <div className="px-4 py-3">
                 <div className="text-sm font-medium text-gray-900 mb-2">{title}</div>
                 <div className="text-sm text-gray-800">

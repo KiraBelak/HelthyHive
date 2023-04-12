@@ -101,7 +101,7 @@ export default function Home({ isConnected }) {
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios.get('/api/publicaciones');
-      setPosts(result.data);
+      setPosts(result.data.reverse());
     };
     fetchData();
   }, []);
