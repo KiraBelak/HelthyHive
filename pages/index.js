@@ -70,21 +70,21 @@ export default function Home({ isConnected }) {
     setAbre(!abre);
   };
 
-  const tiempo= new Date();
+  const tiempo = new Date();
   const { data: session } = useSession();
 
 
 
   const handleSubmit = (data) => {
-    
+
     //hacer post a la api
     const { title, txt } = data;
-    const owner=(session.user.email)
-    console.log("el user es",session.user.name)
-    const name=(session.user.name)
-    const img=(session.user.image)
-  const res= axios.post('/api/publicaciones', {
-    owner,
+    const owner = (session.user.email)
+    console.log("el user es", session.user.name)
+    const name = (session.user.name)
+    const img = (session.user.image)
+    const res = axios.post('/api/publicaciones', {
+      owner,
       title,
       txt,
       tiempo,
@@ -111,7 +111,7 @@ export default function Home({ isConnected }) {
 
   return (
     <MainLayout>
-            <Toaster position="bottom-center" />
+      <Toaster position="bottom-center" />
       {abre ? (
         <div onClick={handleOpen} className="flex min-h-[15px] justify-center bg-salud-primary rounded-b-3xl space-x-4 text-white">
           <svg width="24" className="w-1/6" height="50" viewBox="0 0 24 13" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -144,7 +144,7 @@ export default function Home({ isConnected }) {
                   {item.icon === faCamera ? (
                     <Link href={item.link}>
                       <a>
-                        <FontAwesomeIcon icon={item.icon} style={{ color: '#E5B54B' }} className="w-full h-full text-gray-500 group-hover:text-blue-500"/>
+                        <FontAwesomeIcon icon={item.icon} style={{ color: '#E5B54B' }} className="w-full h-full text-gray-500 group-hover:text-blue-500" />
                       </a>
                     </Link>
                   ) : (item.action ? (
@@ -156,7 +156,7 @@ export default function Home({ isConnected }) {
                       </a>
                     </Link>
                   )
-                    
+
                   )}
                 </div>
               </div>
@@ -165,15 +165,15 @@ export default function Home({ isConnected }) {
           }
         </div>
       )}
-        {post ? (
-          <div className="flex justify-center">
-            <div className="w-full max-w-2xl">
-              <PostForm handleSubmit={handleSubmit} />
-              </div>
-              </div>
-              ) : (
-                null
-              )}
+      {post ? (
+        <div className="flex justify-center">
+          <div className="w-full max-w-2xl">
+            <PostForm handleSubmit={handleSubmit} />
+          </div>
+        </div>
+      ) : (
+        null
+      )}
       <div >
         <div className="flex justify-center">
           <div className="w-full max-w-2xl">

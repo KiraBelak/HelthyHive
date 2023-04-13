@@ -5,7 +5,8 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import StoryImage from '../Stories';
 
-const StoriesSlider = () => {
+
+const StoriesSliderRewards = () => {
     const settings = {
         dots: true,
         infinite: true,
@@ -18,7 +19,7 @@ const StoriesSlider = () => {
     return (
         <div className="w-screen box-border overflow-hidden">
             <br></br>
-            <h3 className="text-2xl font-bold text-gray-700"><span className="text-black">Novedades</span></h3>
+            <h3 className="text-2xl font-bold text-gray-700"><span className="text-black">Mis recompensas</span></h3>
             <br></br>
             <Slider {...settings}>
 
@@ -30,7 +31,7 @@ const StoriesSlider = () => {
                             className="mx-10 box-border"
                         />
                         <h3 className="text-xl text-black">
-                            Consulta Gratis
+                           Consulta gratis
                         </h3>
                     </div>
                 </div>
@@ -43,19 +44,7 @@ const StoriesSlider = () => {
                             className="mx-10 box-border"
                         />
                              <h3 className="text-xl text-black">
-                            Comida Fit
-                        </h3>
-                    </div>
-                </div>
-                <div className="flex justify-between mx-2">
-                    <div className="col-span">
-                        <StoryImage
-                            imageSrc="https://source.unsplash.com/random/100x100"
-                            altText="Story 1"
-                            className="mx-10 box-border"
-                        />
-                             <h3 className="text-xl text-black">
-                             Comida Fit
+                            Psicologo gratis
                         </h3>
                     </div>
                 </div>
@@ -67,7 +56,7 @@ const StoriesSlider = () => {
                             className="mx-10 box-border"
                         />
                              <h3 className="text-xl text-black">
-                             Comida Fit
+                             Consulta gratis
                         </h3>
                     </div>
                 </div>
@@ -79,7 +68,7 @@ const StoriesSlider = () => {
                             className="mx-10 box-border"
                         />
                              <h3 className="text-xl text-black">
-                             Comida Fit
+                          Gratis Talent Land
                         </h3>
                     </div>
                 </div>
@@ -91,20 +80,34 @@ const StoriesSlider = () => {
                             className="mx-10 box-border"
                         />
                              <h3 className="text-xl text-black">
-                             Comida Fit
+                             Consulta gratis
+                        </h3>
+                    </div>
+                </div>
+                <div className="flex justify-between">
+                    <div className="col-span">
+                        <StoryImage
+                            imageSrc="https://source.unsplash.com/random/100x100"
+                            altText="Story 1"
+                            className="mx-10 box-border"
+                        />
+                             <h3 className="text-xl text-black">
+                             Consulta gratis
                         </h3>
                     </div>
                 </div>
 
             </Slider>
             <br></br>
-            <h3 className="text-2xl font-bold text-gray-700"><span className="text-black">Descubre</span></h3>
+        
   
         </div>
+
+        
 
         
 
     );
 };
 
-export default StoriesSlider;
+export default StoriesSliderRewards;
