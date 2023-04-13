@@ -37,6 +37,7 @@ export default async function handler(req, res) {
             }
             */
             const challenges = await challenge.find({}).toArray();
+            console.log(challenges);
             res.status(201).json(challenges);
 
             break;

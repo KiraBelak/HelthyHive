@@ -2,15 +2,15 @@ import React, { useState } from 'react';
 import axios from "axios";
 
 function Formulario() {
-    const [tareas, setTareas] = useState([{ titulo: '', estado: '' }]);
+    const [tareas, setTareas] = useState([{ title: '', completed: '' }]);
     const [title, setTitle] = useState("");
-    const [subTitle, setSubtitle] = useState("");
+    const [subtitle, setSubtitle] = useState("");
     const [description, setDescription] = useState("");
     const [status, setStatus] = useState();
 
 
     const agregarTarea = () => {
-        setTareas([...tareas, { titulo: '', estado: '' }]);
+        setTareas([...tareas, { title: '', completed: '' }]);
     };
 
     const eliminarTarea = (index) => {
@@ -29,11 +29,28 @@ function Formulario() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        const tasks = tareas;
+        const tareasConId = tareas.map((tarea, index) => {
+            return {
+              ...tarea,
+              id: index + 1
+            };
+          });
+        
+          const tasks = tareasConId;
+
+          const updatedItems = tareasConId.map((item) => {
+            return {
+              ...item,
+              completed: item.completed === "true" ? true : false
+            };
+          });
+        
+          tasks = updatedItems;
+
         // Aquí puedes hacer lo que necesites con el array de tareas
         const challengerData = {
             title,
-            subTitle,
+            subtitle,
             description,
             status,
             tasks
@@ -78,7 +95,7 @@ function Formulario() {
                 >
                     Subitulo del desafio
                 </label>
-                <input type="text" required  value={subTitle} onChange={(e) => setSubtitle(e.target.value)}
+                <input type="text" required  value={subtitle} onChange={(e) => setSubtitle(e.target.value)}
                     className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 />
             </div>
@@ -112,8 +129,8 @@ function Formulario() {
                         Título:
                         <input
                             type="text"
-                            name="titulo"
-                            value={tarea.titulo}
+                            name="title"
+                            value={tarea.title}
                             onChange={(event) => handleInputChange(event, index)}
                             className="form-input mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                         />
@@ -122,8 +139,8 @@ function Formulario() {
                         Estado:
                         <input
                             type="text"
-                            name="estado"
-                            value={tarea.estado}
+                            name="completed"
+                            value={tarea.completed}
                             onChange={(event) => handleInputChange(event, index)}
                             className="form-input mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                         />
