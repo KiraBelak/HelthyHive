@@ -62,7 +62,7 @@ HealthyHive es una PWA capaz de reproducirse en cualquier dispositivo que tenga 
 - Nombre del equipo: Devsthink
 - Track: Salud Digna
 - Intgrantes: 
-- Josue Israel Esquivel Garza (PM, Full stack developer
+- Josue Israel Esquivel Garza (PM, Full stack developer)
 - Juan Kaleb Rodriguez Esparza Full stack developer)
 - Luis Daniel Fraga Montalvo (Full stack developer)
 - Dalila Franco (UI/UX)
