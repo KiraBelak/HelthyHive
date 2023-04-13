@@ -4,6 +4,7 @@
 
 ## Entregables:
 Prototipo : https://helthyhive.kirabel.com/
+<br>
 Documento del proyecto: https://docs.google.com/document/d/1Htq_y1dMJsMP7t8SiWJpS0vJuHSIJJZMfPPRRQKfB90/edit?usp=sharing 
 <br>
 Video:
