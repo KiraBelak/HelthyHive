@@ -107,8 +107,15 @@ export default function Home({ isConnected }) {
             <div >
                 <div className="flex justify-center p-4">
                     <div className="w-full max-w-2xl">
-                    <ProgressBarWithTitle></ProgressBarWithTitle>
-                    <CheckboxList></CheckboxList>
+                        <ProgressBarWithTitle></ProgressBarWithTitle>
+                        <CheckboxList></CheckboxList>
+                        <div className="flex justify-center items-center">
+                            <button className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 mt-3">
+                                Ir a mis recompensas
+                            </button>
+                        </div>
+
+
                     </div>
                 </div>
 
