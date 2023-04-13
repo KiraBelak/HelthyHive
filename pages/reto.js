@@ -107,10 +107,22 @@ export default function Home({ isConnected }) {
             <div >
                 <div className="flex justify-center p-4">
                     <div className="w-full max-w-2xl">
-                    <ProgressBarWithTitle></ProgressBarWithTitle>
-                    <CheckboxList></CheckboxList>
+                        <ProgressBarWithTitle></ProgressBarWithTitle>
+                        <CheckboxList></CheckboxList>
                     </div>
                 </div>
+
+                <div className="flex justify-center items-center">
+
+                    <button className="button-link">
+                        <Link href="/rewards">
+                            Ir a mis recompensas
+                        </Link>
+                    </button>
+
+
+                </div>
+
 
             </div>
             <OfflineButton />
