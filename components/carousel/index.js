@@ -47,7 +47,7 @@ const StoriesSlider = () => {
                         </h3>
                     </div>
                 </div>
-                <div className="flex justify-between">
+                <div className="flex justify-between mx-2">
                     <div className="col-span">
                         <StoryImage
                             imageSrc="https://source.unsplash.com/random/100x100"
@@ -55,7 +55,7 @@ const StoriesSlider = () => {
                             className="mx-10 box-border"
                         />
                              <h3 className="text-xl text-black">
-                            Ultrasonido 50% de descuento
+                             Comida Fit
                         </h3>
                     </div>
                 </div>
@@ -67,7 +67,7 @@ const StoriesSlider = () => {
                             className="mx-10 box-border"
                         />
                              <h3 className="text-xl text-black">
-                            Rayox X 50% de descuento
+                             Comida Fit
                         </h3>
                     </div>
                 </div>
@@ -79,7 +79,7 @@ const StoriesSlider = () => {
                             className="mx-10 box-border"
                         />
                              <h3 className="text-xl text-black">
-                            Mastografias 50% de descuento
+                             Comida Fit
                         </h3>
                     </div>
                 </div>
@@ -91,7 +91,7 @@ const StoriesSlider = () => {
                             className="mx-10 box-border"
                         />
                              <h3 className="text-xl text-black">
-                            Tomografias Gratis
+                             Comida Fit
                         </h3>
                     </div>
                 </div>
