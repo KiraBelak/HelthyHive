@@ -7,7 +7,7 @@
 - React
 - Tailwind CSS
 - Node.js
-- 
+- MongoDb
 
 ## Instalación
 
@@ -17,15 +17,43 @@
 4. Ejecutar el comando `yarn run dev
 
 
-## Funcionalidades
+## Problematica
+La nutrición en México es una problemática importante debido a varios factores, incluyendo la falta de visibilidad y la percepción equivocada de que es un lujo en lugar de una prioridad. 
+El alto índice de obesidad en el país también es un problema, posiblemente debido a la falta de educación nutricional y la desinformación. Además, la población carece de apoyo en términos de acceso a alimentos saludables y asequibles, así como la falta de cultura de prevención y la cultura de hacer deporte. 
+Estos factores contribuyen a la falta de hábitos personalizados de alimentación y una vida más activa.
 
-- Funcionalidad 1
-- Funcionalidad 2
-- etc.
+## Definición del proyecto
+HealthyHive es red social enfocada a la salud y bienestar que ayuda a los usuarios a mejorar su bienestar mediante recomendaciones personalizadas sobre nutrición y rutinas físicas. 
+El usuario podrá compartir su progreso en la red social y recibir estrellas, las cuales ayudaran en un futuro a recibir recompensas.
+La plataforma enviará retos, los cuales serán dietas y ejercicios a la medida, con el objetivo de crear hábitos saludables, y generar comunidad.
 
-## Autor
+## Alcance
+HealthyHive es una PWA capaz de reproducirse en cualquier dispositivo que tenga una conexión a internet, sin importar su sistema operativo o equipo, teniendo la particularidad de que no ocupa espacio relevante en el dispositivo y una vez que ingresas puedes descargarla para usarla en un futuro sin conexión.
+
+## Objetivos
+-Ser de ayuda en tema de nutrición y salud a la población.
+-Compartir con tu comunidad tu progreso y obtener recompensas por ello en el futuro.
+-Asesoramiento nutricional con recomendaciones personalizadas.
+-Se premiará a los usuarios por mejorar su salud con estrellas obtenidas al interactuar con la comunidad o al completar los retos personalizados.
+-Multiplataforma.
+-Accesibilidad offline.
+
+## Objetivos a futuro
+-Notificaciones personalizadas 
+-Planes alimenticios a la medida 
+-Planes de entrenamiento físico a la medida 
+-Asesoramiento psicológico 
+-Integración con wearables 
+
+
+
+- Enlace al sitio web del autor:
+- https://helthyhive.kirabel.com/
+
+## Autores
 
 - Nombre del equipo: Devsthink
+- Track: Salud Digna
 - Intgrantes: 
 - Josue Israel Esquivel Garza (PM, Full stack developer
 - Juan Kaleb Rodriguez Esparza Full stack developer)
@@ -33,6 +61,5 @@
 - Dalila Franco (UI/UX)
 
 
-- Enlace al sitio web del autor:
-- https://helthy-hive.vercel.app/
+
 
