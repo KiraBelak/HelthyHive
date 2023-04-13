@@ -15,6 +15,13 @@ const AccountLayout = ({ title, children, ...props }) => {
   const { status } = useSession();
 
   const navigation = [
+
+    {
+      name: "Mi perfil",
+      href: "/user/MyProfile",
+      icon: HeartIcon,
+      current: false,
+    },
     {
       name: "Información de la cuenta",
       href: "/user/info",
@@ -22,8 +29,8 @@ const AccountLayout = ({ title, children, ...props }) => {
       current: false,
     },
     {
-      name: "Mi perfil",
-      href: "/user/MyProfile",
+      name: "Mis recompensas",
+      href: "/rewards",
       icon: HeartIcon,
       current: false,
     },
@@ -34,6 +41,8 @@ const AccountLayout = ({ title, children, ...props }) => {
       icon: CogIcon,
       current: false,
     },
+
+
   ];
 
   if (status === "loading") {
