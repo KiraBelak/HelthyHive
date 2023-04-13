@@ -51,7 +51,7 @@ const RetoSlider = () => {
         `}</style>
       <br></br>
       <h3 className="text-2xl font-bold text-gray-700 ">
-        <span className="text-black">Novedades</span>
+        <span className="text-black">Retos Actuales</span>
       </h3>
       <br></br>
       <Slider {...settings}>
@@ -67,7 +67,7 @@ const RetoSlider = () => {
       </Slider>
       <br></br>
       <h3 className="text-2xl font-bold text-gray-700">
-        <span className="text-black">Descubre</span>
+        <span className="text-black">Recompensas</span>
       </h3>
     </div>
     
