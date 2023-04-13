@@ -26,7 +26,7 @@ Figma: https://www.figma.com/proto/qtt5buBJn8cJ6J4YkFAF9r/Salud-Digna?node-id=10
 1. Clonar el repositorio desde GitHub.
 2. Abrir la carpeta del proyecto en la terminal.
 3. Ejecutar el comando `yarn` para instalar las dependencias.
-4. Ejecutar el comando `yarn run dev
+4. Ejecutar el comando `yarn run dev`
 
 
 ## Problematica
