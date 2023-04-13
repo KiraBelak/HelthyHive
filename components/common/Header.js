@@ -37,14 +37,14 @@ const Header = () => {
                     : `https://avatars.dicebear.com/api/micah/${session.user.email}.svg?background=%23ffffff`
                 }
               />
-           <div className="flex flex-col items-center justify-center">
-  <h2 className="text-2xl font-extrabold text-salud-white mb-4" style={{ fontFamily: "Roboto" }}>
-    Hola {session.user.name ? session.user.name : "sin nombre"}!
-  </h2>
-  <h2 className="text-lg font-bold text-salud-white" style={{ fontFamily: "Roboto" }}>
-    Puedes obtener estrellas
-  </h2>
-</div>
+              <div className="flex flex-col items-center justify-center">
+                <h2 className="text-2xl font-extrabold text-salud-white mb-4" style={{ fontFamily: "Roboto" }}>
+                  Hola {session.user.name ? session.user.name : "sin nombre"}!
+                </h2>
+                <h2 className="text-lg font-bold text-salud-white" style={{ fontFamily: "Roboto" }}>
+                  Puedes obtener estrellas
+                </h2>
+              </div>
 
 
               <Link href="/">
@@ -93,7 +93,7 @@ const Header = () => {
               </div>
             </>
           )}
-     
+
         </div>
       </div>
     </Popover>
