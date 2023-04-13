@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Camera from 'react-camera';
 import { useRouter } from 'next/router';
 
@@ -14,6 +14,11 @@ const CameraPage = () => {
     // Redirige al usuario a la página de inicio después de tomar la foto
     router.push('/');
   };
+//despues de entrar a la pagina de camara, se abre la camara automaticamente
+useEffect(() => {
+  setIsCameraOpen(true);
+}, []);
+
 
   return (
     <div className="min-h-screen flex justify-center items-center">
