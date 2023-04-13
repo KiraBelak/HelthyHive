@@ -1,0 +1,65 @@
+import DefAvatar from "@/components/users/avatar";
+import axios from "axios";
+import React, { useState, useEffect } from "react";
+import RetoSlider from "@/components/RetoSlider"
+
+const Objetive = () => {
+
+
+
+    return (
+        <>
+        <div className="flex flex-col items-center justify-center mt-4">
+            <div className="mt-4">
+                Nombre de usuario
+            </div>
+            <div className="mt-4" >
+                <DefAvatar></DefAvatar>
+            </div>
+
+            <table className="table-auto mt-6">
+                <tbody>
+                    <tr>
+                        <td className="border px-4  text-center">0000</td>
+                        <td className="border px-4  text-center">0000</td>
+                    </tr>
+                    <tr>
+                        <td className="border px-4  text-center">Nivel</td>
+                        <td className="border px-4  text-center">Estrellas</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div className="">
+                Mi avance
+            </div>
+
+            <div>
+                Progreso
+            </div>
+
+            <div>
+                0,00%
+            </div>
+
+            <div>
+                BARRA DE PROGRESO
+            </div>
+
+            <div>
+                Retos actuales 
+            </div>
+
+            
+
+        </div>
+        <div className="flex items-center justify-center mt-4 " style={{ margin: '10px', } } >
+        <RetoSlider></RetoSlider>
+        </div>
+        </>
+    )
+
+
+};
+
+export default Objetive 
