@@ -3,6 +3,7 @@
 ![logo](https://user-images.githubusercontent.com/44554474/231716928-d8b85462-e74a-4be4-a76f-df51783a3efd.png)
 
 ## Entregables:
+Prototipo : https://helthyhive.kirabel.com/
 Documento del proyecto: https://docs.google.com/document/d/1Htq_y1dMJsMP7t8SiWJpS0vJuHSIJJZMfPPRRQKfB90/edit?usp=sharing 
 <br>
 Video:
@@ -54,11 +55,6 @@ HealthyHive es una PWA capaz de reproducirse en cualquier dispositivo que tenga 
 -Planes de entrenamiento físico a la medida 
 -Asesoramiento psicológico 
 -Integración con wearables 
-
-
-
-- Enlace al sitio web del autor:
-- https://helthyhive.kirabel.com/
 
 ## Autores
 
