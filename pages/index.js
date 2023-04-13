@@ -3,7 +3,7 @@ import clientPromise from "@/lib/mongodb";
 import OfflineButton from "@/components/common/OfflineButton";
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMagnifyingGlass, faReceipt, faCamera, faBasketball, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faMagnifyingGlass,faUserCog, faReceipt, faCamera, faBasketball, faUser } from '@fortawesome/free-solid-svg-icons';
 import Post from "../components/Post";
 import Carousel from "../components/carousel";
 import "material-icons/iconfont/material-icons.css";
@@ -37,6 +37,7 @@ export default function Home({ isConnected }) {
   const [abre, setAbre] = useState(true);
   const [post, setPost] = useState(false);
   const [posts, setPosts] = useState([]);
+  const [foto, setFoto] = useState([]);
   const menu = [{
     title: 'Feed',
     icon: faMagnifyingGlass,
@@ -63,6 +64,7 @@ export default function Home({ isConnected }) {
     link: "/user/profile"
   },
   ]
+  
 
   const handleOpen = () => {
     setAbre(!abre);
@@ -120,6 +122,21 @@ export default function Home({ isConnected }) {
 
       ) : (
         <div className="flex justify-center bg-salud-primary rounded-b-3xl space-x-4 text-white">
+
+          {session.user.roles.includes("admin")&&(
+            <div className="flex my-2 flex-col items-center space-y-1 text-white cursor-pointer group">
+                            <div className="w-12 h-12 my-2 p-1 text-white">
+
+            <Link href="/admin/dashboard">
+              <a>
+                <FontAwesomeIcon icon={faUserCog} className="w-full h-full text-gray-500 group-hover:text-blue-500" />
+
+              </a>
+            </Link>
+            </div>
+            </div>
+          )
+          }
           {menu.map((item, index) => {
             return (
               <div key={index} className="flex my-2 flex-col items-center space-y-1 text-white cursor-pointer group">
