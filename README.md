@@ -1,5 +1,4 @@
-# Nombre del proyecto
-
+# HelthyHive
 Breve descripción del proyecto.
 
 ## Tecnologías utilizadas
@@ -7,14 +6,15 @@ Breve descripción del proyecto.
 - React
 - Tailwind CSS
 - Node.js
-- etc.
+- 
 
 ## Instalación
 
 1. Clonar el repositorio desde GitHub.
 2. Abrir la carpeta del proyecto en la terminal.
-3. Ejecutar el comando `npm install` para instalar las dependencias.
-4. Ejecutar el comando `npm start` para iniciar la aplicación.
+3. Ejecutar el comando `yarn` para instalar las dependencias.
+4. Ejecutar el comando `yarn run dev
+
 
 ## Funcionalidades
 
@@ -24,7 +24,14 @@ Breve descripción del proyecto.
 
 ## Autor
 
-- Nombre del autor
-- Enlace al sitio web del autor
+- Nombre del equipo: Devsthink
+- Intgrantes: 
+- Josue Israel Esquivel Garza (PM, Full stack developer
+- Juan Kaleb Rodriguez Esparza Full stack developer)
+- Luis Daniel Fraga Montalvo (Full stack developer)
+- Dalila Franco (UI/UX)
 
-¡Espero que esto te sea útil!
+
+- Enlace al sitio web del autor:
+- https://helthy-hive.vercel.app/
+
