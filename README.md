@@ -3,11 +3,15 @@
 ![logo](https://user-images.githubusercontent.com/44554474/231716928-d8b85462-e74a-4be4-a76f-df51783a3efd.png)
 
 ## Entregables:
-Documento del proyecto: https://docs.google.com/document/d/1Htq_y1dMJsMP7t8SiWJpS0vJuHSIJJZMfPPRRQKfB90/edit?usp=sharing
+Documento del proyecto: https://docs.google.com/document/d/1Htq_y1dMJsMP7t8SiWJpS0vJuHSIJJZMfPPRRQKfB90/edit?usp=sharing 
+<br>
 Video:
+<br>
+<br>
 Presentacion: https://tome.app/devsthink-2f6/healthhive-a-comprehensive-health-and-wellness-platform-clgexf3ti08ls8j3zci7skjsp
+<br>
 Figma: https://www.figma.com/proto/qtt5buBJn8cJ6J4YkFAF9r/Salud-Digna?node-id=1051-3490&scaling=scale-down&page-id=4%3A5&starting-point-node-id=1051%3A3532
-
+<br>
 
 ## Tecnologías utilizadas
 
