@@ -12,6 +12,14 @@ import { signOut } from "next-auth/react";
 import Table from "../components/table_perfil";
 import ProgressBarWithTitleForProfile from "../components/nivel_actividad";
 import CheckboxListForProfile from "../components/barraConChecboxes";
+import RewardsProgressBarWithTitleForProfile from "../components/rewards/rewardsProgressBarWithTitle";
+import RewardsCheckboxListForProfile from "../components/rewards/rewardsCheckbox";
+import TitleSubtitle from "../components/rewards/rewardTitle";
+import StoriesSliderRewards from "../components/rewards/verMasRecompensas";
+
+
+
+
 
 
 const ProfilePage = () => {
@@ -101,9 +109,11 @@ const ProfilePage = () => {
 
 
                     <Table />
-                    <ProgressBarWithTitleForProfile></ProgressBarWithTitleForProfile>
+                    <RewardsProgressBarWithTitleForProfile></RewardsProgressBarWithTitleForProfile>
 
-                    <CheckboxListForProfile></CheckboxListForProfile>
+                    <RewardsCheckboxListForProfile></RewardsCheckboxListForProfile>
+                    <TitleSubtitle title="Tus recompensas" subtitle="Sabemos que no es sencillo, pero lo has logrado y te queremos premiar por tu esfuerzo. ¡Continúa cumpliendo retos y genera un cambio en tu vida!" />
+                  <StoriesSliderRewards></StoriesSliderRewards>
                 </div>
 
             </div>
