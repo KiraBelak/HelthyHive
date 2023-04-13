@@ -56,7 +56,7 @@ const StoriesSliderRewards = () => {
                             className="mx-10 box-border"
                         />
                              <h3 className="text-xl text-black">
-                            50% de descuento en ultrasonido
+                             Consulta gratis
                         </h3>
                     </div>
                 </div>
@@ -68,7 +68,7 @@ const StoriesSliderRewards = () => {
                             className="mx-10 box-border"
                         />
                              <h3 className="text-xl text-black">
-                          Entrada gratis Talent Land
+                          Gratis Talent Land
                         </h3>
                     </div>
                 </div>
@@ -80,7 +80,7 @@ const StoriesSliderRewards = () => {
                             className="mx-10 box-border"
                         />
                              <h3 className="text-xl text-black">
-                            Contrato en Salud Digna
+                             Consulta gratis
                         </h3>
                     </div>
                 </div>
@@ -92,7 +92,7 @@ const StoriesSliderRewards = () => {
                             className="mx-10 box-border"
                         />
                              <h3 className="text-xl text-black">
-                            Consulta con Psicologo
+                             Consulta gratis
                         </h3>
                     </div>
                 </div>
