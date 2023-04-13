@@ -1,8 +1,10 @@
 import { useState } from "react";
 import Camera, { FACING_MODES } from "react-html5-camera-photo";
 import "react-html5-camera-photo/build/css/index.css";
+//funciona con el componente camaron con camara trasera
 
-const CameraPage = () => {
+
+const Camarita = () => {
   const [imageData, setImageData] = useState(null);
   const [cameraFacingMode, setCameraFacingMode] = useState(FACING_MODES.ENVIRONMENT);
 
@@ -53,4 +55,6 @@ const CameraPage = () => {
   );
 };
 
-export default CameraPage;
+export default Camarita;
+
+

@@ -50,7 +50,7 @@ export default function Home({ isConnected }) {
   {
     title: 'Tomar foto',
     icon: faCamera,
-    link: "/camera"
+    link: "/cam"
   },
   {
     title: 'Retos',
