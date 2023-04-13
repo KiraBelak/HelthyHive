@@ -8,6 +8,13 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Table from "../../components/table_perfil";
 import SubtitleAndButtons from "../../components/subtitulo_botones";
+import ProgressiveBar from "../../components/nivel_actividad";
+import ProgressBarWithTitle from "../../components/reto";
+import CheckboxList from "../../components/lista_reto";
+import ProgressBarWithTitleForProfile from "../../components/nivel_actividad";
+import CheckboxListForProfile from "../../components/barraConChecboxes";
+import DownloadButton from "../../components/regimenAlimenticio";
+import FormProfilePage from "../../components/formMyProfile";
 
 const ProfilePage = () => {
     const {
@@ -92,19 +99,22 @@ const ProfilePage = () => {
     return (
         <AccountLayout>
             <Toaster position="bottom-center" />
-
-            <div className="w-full flex justify-center">
-
-
-
+            <div className="w-full flex  ">
                 <div className="relative bg-white w-full">
                     <Table />
-                    <h3 className="text-4xl font-bold text-center text-gray-800 mt-4">
+                    <h3 className="text-4xl font-bold text-gray-800 mt-4 text-left p-4">
                         Mi perfil
                     </h3>
 
                     <SubtitleAndButtons></SubtitleAndButtons>
 
+                    <ProgressBarWithTitleForProfile></ProgressBarWithTitleForProfile>
+
+                    <CheckboxListForProfile></CheckboxListForProfile>
+
+                    <DownloadButton></DownloadButton>
+
+                    <FormProfilePage></FormProfilePage>
 
 
 
@@ -120,7 +130,6 @@ const ProfilePage = () => {
 
 
 
-   
 
 
 

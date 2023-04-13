@@ -93,11 +93,8 @@ const ProfilePage = () => {
       <Toaster position="bottom-center" />
 
       <div className="w-full flex justify-center">
-
-
-
         <div className="relative bg-white w-full">
-        <Table/>
+          <Table />
           <h3 className="text-4xl font-bold text-center text-gray-800 mt-4">
             Mi información
           </h3>
@@ -117,6 +114,8 @@ const ProfilePage = () => {
                     type="text"
                     name="nombre"
                     id="nombre"
+                    readOnly // añadir el atributo readOnly para hacer el campo de sólo lectura
+                    placeholder="Josue G"
                     autoComplete="nombre"
                     {...register("nombre", {
                       required: "nombre es requerido",
@@ -144,6 +143,8 @@ const ProfilePage = () => {
                     type="email"
                     name="email"
                     id="email"
+                    readOnly // añadir el atributo readOnly para hacer el campo de sólo lectura
+                    placeholder="josue@prueba.com"
                     autoComplete="email"
                     {...register("email", {
                       required: "email es requerido",
@@ -169,6 +170,7 @@ const ProfilePage = () => {
                     name="phone"
                     id="phone"
                     autoComplete="phone"
+                    placeholder="4446668888"
                     {...register("phone", {
                       required: "Telefono es requerido",
                     })}
@@ -201,6 +203,7 @@ const ProfilePage = () => {
                     type="number"
                     name="edad"
                     id="edad"
+                    placeholder="24"
                     autoComplete="edad"
                     {...register("edad", {
                       required: "edad es requerida",
@@ -225,6 +228,7 @@ const ProfilePage = () => {
                     type="number"
                     name="weight"
                     id="weight"
+                    placeholder="72 kg"
                     autoComplete="weight"
                     {...register("weight", {
                       required: "Peso es requerido",
@@ -260,6 +264,7 @@ const ProfilePage = () => {
                   <input
                     type="number"
                     name="height"
+                    placeholder="1.80m"
                     id="height"
                     autoComplete="height"
                     {...register("height", {
@@ -285,6 +290,7 @@ const ProfilePage = () => {
                     type="text"
                     name="imc"
                     id="imc"
+                    placeholder="Fuertote"
                     autoComplete="imc"
                     {...register("imc", {
                       required: "imc es requerido",
@@ -340,6 +346,13 @@ const ProfilePage = () => {
             </div>
           </form>
         </div>
+
+
+
+
+
+
+
 
       </div>
 
