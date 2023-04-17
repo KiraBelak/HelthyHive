@@ -10,17 +10,34 @@ export default async function handler (req, res){
     switch (method){
              //crear una publicacion nueva para el usuario especificado y la fecha y hora actual
         case "POST":
-            const {owner,title,txt,tiempo,name,img} = body;
-            const result = await events.insertOne({
-                owner,
-                title,
-                txt,
-                tiempo,
-                name,
-                img
-            });
-            res.status(200).json(result);
-            break;
+            const {owner,title,txt,tiempo,name} = body;
+            var {img} = body;
+            if (!img){
+                 img = `https://avatars.dicebear.com/api/micah/${owner}.svg?background=%23ffffff`
+                 const result = await events.insertOne({
+                    owner,
+                    title,
+                    txt,
+                    tiempo,
+                    name,
+                    img
+                });
+                res.status(200).json(result);
+                break;
+            }else{
+                const result = await events.insertOne({
+                    owner,
+                    title,
+                    txt,
+                    tiempo,
+                    name,
+                    img
+                });
+                res.status(200).json(result);
+                break;
+            }
+
+           
         //obtener todas las publicaciones de todos los usuarios
         case "GET":
             const result2 = await events.find().toArray();
