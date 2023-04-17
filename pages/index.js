@@ -122,7 +122,7 @@ export default function Home({ isConnected }) {
 
       ) : (
         <div className="flex justify-center bg-salud-primary rounded-b-3xl space-x-4 text-white">
-
+{/* 
           {session.user.roles.includes("admin")&&(
             <div className="flex my-2 flex-col items-center space-y-1 text-white cursor-pointer group">
                             <div className="w-12 h-12 my-2 p-1 text-white">
@@ -136,7 +136,7 @@ export default function Home({ isConnected }) {
             </div>
             </div>
           )
-          }
+          } */}
           {menu.map((item, index) => {
             return (
               <div key={index} className="flex my-2 flex-col items-center space-y-1 text-white cursor-pointer group">
