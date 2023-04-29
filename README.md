@@ -1,4 +1,4 @@
-# HelthyHive
+# Healthy Hive
 # Track: Salud Digna
 ![logo](https://user-images.githubusercontent.com/44554474/231716928-d8b85462-e74a-4be4-a76f-df51783a3efd.png)
 
