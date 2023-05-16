@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import Camera from 'react-camera';
 
 const style = {
@@ -30,11 +30,18 @@ const style = {
 };
 
 export default function App({ cameraRef, imgRef,takePicture}) {
-;
+
+  const [isCameraOpen, setIsCameraOpen] = useState(false);
+
+  useEffect(() => {
+    setIsCameraOpen(true);
+  }, []);
 
 
   return (
     <div style={style.container}>
+
+{isCameraOpen ? ( 
       <Camera
         style={style.preview}
         ref={cameraRef}
@@ -42,10 +49,11 @@ export default function App({ cameraRef, imgRef,takePicture}) {
         <div  onClick={takePicture}>
         </div>
       </Camera>
-      <img
+) : null}
+      {/* <img
         style={style.captureImage}
         ref={imgRef}
-      />
+      /> */}
     </div>
   );
 }
