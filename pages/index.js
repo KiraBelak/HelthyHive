@@ -113,9 +113,7 @@ export default function Home({ isConnected }) {
     <MainLayout>
       <Toaster position="bottom-center" />
       {!session ? (
-        <div className="flex flex-col items-center justify-center">
-          Necesitas iniciar sesion para interactuar
-          </div>
+       null
           ) : (
             abre ? (
         <div onClick={handleOpen} className="flex min-h-[15px] justify-center bg-salud-primary rounded-b-3xl space-x-4 text-white">
@@ -182,16 +180,15 @@ export default function Home({ isConnected }) {
         null
       )}
       <div >
-        <div className="flex justify-center">
+        <div className="flex justify-center mb-6">
           <div className="w-full max-w-2xl">
             <Carousel />
           </div>
         </div>
 
-        <br></br>
         {posts.map((post, i) => {
           return (
-            <Post key={i} data={posts[i]} />
+             <Post key={i} data={posts[i]}/>
           )
         }
         )}

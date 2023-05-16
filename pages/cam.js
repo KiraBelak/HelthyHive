@@ -1,10 +1,9 @@
 import CameraContainer from '../components/CameraContainer';
 
-const IndexPage = () => {
+const IndexPage = (props) => {
   return (
     <div>
-      <h1>Toma de fotos con React</h1>
-      <CameraContainer />
+      <CameraContainer/>
     </div>
   );
 };

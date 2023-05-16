@@ -4,12 +4,12 @@ import "react-html5-camera-photo/build/css/index.css";
 //funciona con el componente camaron con camara trasera
 
 
-const Camarita = () => {
+const Camarita = ({toma}) => {
   const [imageData, setImageData] = useState(null);
   const [cameraFacingMode, setCameraFacingMode] = useState(FACING_MODES.ENVIRONMENT);
 
-  const handleTakePhoto = (dataUri) => {
-    setImageData(dataUri);
+  const takePhoto = (dataUri) => {
+    toma(dataUri,"camara2");
   };
 
   const handleCameraFacingModeChange = () => {
@@ -24,7 +24,9 @@ const Camarita = () => {
     <div className="flex flex-col items-center justify-center h-screen">
       <div className="relative w-full h-full">
         <Camera
-          onTakePhoto={handleTakePhoto}
+          onTakePhoto={(dataUri) => {
+            takePhoto(dataUri);
+          }}
           idealFacingMode={cameraFacingMode}
           isFullscreen={true}
           isMaxResolution={true}
@@ -37,10 +39,10 @@ const Camarita = () => {
           />
         )}
       </div>
-      <div className="mt-6 space-x-4">
+      {/* <div className="mt-6 space-x-4">
         <button
           className="px-4 py-2 bg-blue-600 text-white rounded"
-          onClick={handleTakePhoto}
+          onClick={takePhoto}
         >
           Tomar foto
         </button>
@@ -50,7 +52,7 @@ const Camarita = () => {
         >
           Cambiar cámara
         </button>
-      </div>
+      </div> */}
     </div>
   );
 };

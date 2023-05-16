@@ -1,44 +1,51 @@
-import React, { useState, useEffect } from 'react';
+import React, { useRef } from 'react';
 import Camera from 'react-camera';
-import { useRouter } from 'next/router';
 
+const style = {
+  preview: {
+    position: 'relative',
+  },
+  captureContainer: {
+    display: 'flex',
+    position: 'absolute',
+    justifyContent: 'center',
+    zIndex: 1,
+    bottom: 0,
+    width: '100%'
+  },
+  captureButton: {
+    backgroundColor: '#fff',
+    borderRadius: '50%',
+    height: 56,
+    width: 56,
+    color: '#000',
+    margin: 20
+  },
+  captureImage: {
+    width: '100%',
+  },
+  container: {
+    // Add any other styles you want for the container here
+  }
+};
 
-const CameraPage = () => {
-  const [isCameraOpen, setIsCameraOpen] = useState(false);
-  const router = useRouter();
-
-  const handleTakePhoto = (dataUri) => {
-    // Aquí puedes enviar la foto al servidor o hacer lo que necesites con ella
-    console.log('La foto ha sido tomada:', dataUri);
-
-    // Redirige al usuario a la página de inicio después de tomar la foto
-    router.push('/');
-  };
-//despues de entrar a la pagina de camara, se abre la camara automaticamente
-useEffect(() => {
-  setIsCameraOpen(true);
-}, []);
+export default function App({ cameraRef, imgRef,takePicture}) {
+;
 
 
   return (
-    <div className="min-h-screen flex justify-center items-center">
-      <div className="max-w-md w-full">
-        {isCameraOpen ? (
-          <Camera
-            onTakePhoto={(dataUri) => handleTakePhoto(dataUri)}
-            idealFacingMode={window && window.innerWidth > 768 ? 'environment' : 'user'}
-          />
-        ) : (
-          <button
-            onClick={() => setIsCameraOpen(true)}
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-          >
-            Abrir cámara
-          </button>
-        )}
-      </div>
+    <div style={style.container}>
+      <Camera
+        style={style.preview}
+        ref={cameraRef}
+      >
+        <div  onClick={takePicture}>
+        </div>
+      </Camera>
+      <img
+        style={style.captureImage}
+        ref={imgRef}
+      />
     </div>
   );
-};
-
-export default CameraPage;
+}

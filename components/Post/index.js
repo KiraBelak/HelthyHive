@@ -34,7 +34,7 @@ const Post = ({data}) => {
 
     const [likes, setLikes] = useState(0);
     return (
-        <div className="max-w-md w-full mx-auto bg-white rounded-md shadow-md overflow-hidden">
+        <div className="max-w-md w-full mx-auto bg-white rounded-md shadow-md overflow-hidden mb-4">
             <div className="flex items-center justify-between px-4 py-3 bg-gray-100">
                 {/* Empieza el usario y el tiempo */}
                 <div className="flex items-center">
