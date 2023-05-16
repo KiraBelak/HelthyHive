@@ -50,10 +50,10 @@ export default function App({ cameraRef, imgRef,takePicture}) {
         </div>
       </Camera>
 ) : null}
-      {/* <img
+      <img
         style={style.captureImage}
         ref={imgRef}
-      /> */}
+      />
     </div>
   );
 }
