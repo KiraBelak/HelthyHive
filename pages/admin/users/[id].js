@@ -12,6 +12,9 @@ const AdminUsersShowPage = () => {
   const [fetchError, setFetchError] = useState(false);
   const [user, setUser] = useState(undefined);
   const router = useRouter();
+  const [response, setResponse] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const { id } = router.query;
@@ -28,6 +31,64 @@ const AdminUsersShowPage = () => {
     }
     getUser();
   }, [router.query]);
+
+//traer de las variables de entorno la api key de openai
+  const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
+
+  const model = "text-davinci-002";
+  const prompt = "This is a test";
+  const maxTokens = 5;
+  const temperature = 0.9;
+  const topP = 1;
+
+  const n = 1;
+ 
+
+  const params = {
+    prompt,
+    maxTokens,
+    temperature,
+    topP,
+    n,
+    maxTokens,
+    stop: null,
+  };
+
+  const headers = {
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${OPENAI_API_KEY}`,
+  };
+
+  const datas = {
+    prompt,
+    max_tokens: maxTokens,
+    n: n,
+    stop: null,
+    temperature,
+    top_p: topP,
+  }
+
+  const handleGenerate = async () => {
+    setLoading(true);
+    setError(null);
+    setResponse(null);
+    try {
+      console.log("datas", datas)
+      const { data } = await axios.post(
+        `https://api.openai.com/v1/engines/${model}/completions`,
+        datas,
+        { headers }
+      );
+      console.log("data", data)
+      setResponse(data);
+    } catch (err) {
+      console.log("err", err)
+      setError(err);
+    }
+    setLoading(false);
+  };
+
+ 
 
   return (
     <AdminLayout title="Usuarios">
@@ -137,6 +198,21 @@ const AdminUsersShowPage = () => {
                                 </dd>
                               </div>
                             </dl>
+                          </div>
+                          <div className="border-t border-gray-200 px-4 py-5 sm:px-6">
+                            {/* Boton para dispara handleGenerate */}
+                            <button
+                              onClick={handleGenerate}
+                              type="button"
+                              className="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mb-4"
+                            >
+                              Generar texto
+                            </button>
+                              {/* mostrar texto generado */}
+                            <div className="text-sm text-gray-900">
+                              {response}
+                              </div>
+
                           </div>
                         </div>
                       ) : (

@@ -5,6 +5,8 @@ import axios from "axios";
 import { useSession, signOut } from "next-auth/react";
 import toast, { Toaster } from "react-hot-toast";
 import { stringify } from 'querystring';
+import { useRouter } from 'next/router';
+
 
 
 
@@ -18,6 +20,8 @@ const CameraContainer = () => {
   const imgRef = useRef(null);
   const [imageBuffer, setImageBuffer] = useState(null);
   const [imageBuffer2, setImageBuffer2] = useState(null);
+  const [url1, setUrl1] = useState(null);
+  const router = useRouter();
 
   //hacewr un get para traer las publicaciones
   
@@ -93,6 +97,23 @@ const CameraContainer = () => {
           }
         })
     }
+
+    //funcion para subir la foto a cloudinary
+    const uploadImage = async () => {
+      
+      const data = new FormData();
+      data.append('file', capturedImage);
+      //mandar la imagen a cloudinary
+      const res = await axios.post('/api/cloudinary', data);
+      console.log('res', res);
+      //guardar la url de la imagen en el estado
+      // setUrl1(res.data.secure_url);
+
+    }
+    //publicar la foto
+    const publicar = async () => {
+    }
+
  
   
 
@@ -100,6 +121,7 @@ const CameraContainer = () => {
   
   return (
     <div className="relative h-screen">
+      <Toaster />
       {imageBuffer ? (
         <section className="h-screen">
         <div className="relative h-full">
@@ -119,18 +141,24 @@ const CameraContainer = () => {
      <button
        className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
        onClick={() => {
+        toast.loading("Funcion en construccion");
+        //despues de 5 segundos redirecciona a la pagina principal
+        setTimeout(() => {
+          router.push('/');
+        }, 5000);
          // setCapturedImage(null);
          // setImageBuffer(null);
-         console.log("capturedImage", capturedImage)
-         console.log("imageBuffer", imageBuffer)
-         console.log("imageBuffer2", imageBuffer2)
-         const owner = session.user.email;
-         const tiempo = new Date();
-         const name = session.user.name;
-         const img = session.user.image;
-         const dataUri = capturedImage;
-         const camara = imageBuffer2;
-         // const camara = imageBuffer;
+        //  console.log("capturedImage", capturedImage)
+        //  console.log("imageBuffer", imageBuffer)
+        //  console.log("imageBuffer2", imageBuffer2)
+        //  uploadImage();
+        // //  const owner = session.user.email;
+        //  const tiempo = new Date();
+        //  const name = session.user.name;
+        //  const img = session.user.image;
+        //  const dataUri = capturedImage;
+        //  const camara = imageBuffer2;
+        //  // const camara = imageBuffer;
        }
        }
      >
