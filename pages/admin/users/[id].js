@@ -6,6 +6,8 @@ import LoadingCircle from "@/components/common/LoadingCircle";
 import axios from "axios";
 import { useRouter } from "next/router";
 import { unixToFormat } from "@/utils/dates";
+import { TextField, FormControl, FormLabel, RadioGroup, FormControlLabel, Radio } from "@mui/material";
+
 
 const AdminUsersShowPage = () => {
   const [isInitialLoading, setIsInitialLoading] = useState(true);
@@ -13,9 +15,17 @@ const AdminUsersShowPage = () => {
   const [user, setUser] = useState(undefined);
   const router = useRouter();
   const [response, setResponse] = useState(null);
+  const [response2, setResponse2] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-
+  const [age, setAge] = useState(0);
+  const [gender, setGender] = useState("");
+  const [weight, setWeight] = useState(0);
+  const [height, setHeight] = useState(0);
+  const [activity, setActivity] = useState("");
+  const [goal, setGoal] = useState("");
+  const[alergic, setAlergic] = useState("");
+  
   useEffect(() => {
     const { id } = router.query;
     async function getUser() {
@@ -33,62 +43,70 @@ const AdminUsersShowPage = () => {
   }, [router.query]);
 
 //traer de las variables de entorno la api key de openai
-  const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 
-  const model = "text-davinci-002";
-  const prompt = "This is a test";
-  const maxTokens = 5;
+  
+
+  const handleGenerate = async () => {
+    setLoading(true);
+  const prompt = `Genera una dieta para mí durante 2 días. Soy una mujer de 30 años, peso 60 kg, mido 1.60 m, soy sedentaria, quiero perder peso y soy alérgica a la lactosa. Me regresas la dieta en un formato de Json por dia y que sea por dia.`;
+  const maxTokens = 1000;
   const temperature = 0.9;
   const topP = 1;
 
   const n = 1;
  
 
-  const params = {
+  const data = {
     prompt,
     maxTokens,
+    n,
     temperature,
     topP,
-    n,
-    maxTokens,
-    stop: null,
-  };
-
-  const headers = {
-    "Content-Type": "application/json",
-    Authorization: `Bearer ${OPENAI_API_KEY}`,
-  };
-
-  const datas = {
-    prompt,
-    max_tokens: maxTokens,
-    n: n,
-    stop: null,
-    temperature,
-    top_p: topP,
   }
-
-  const handleGenerate = async () => {
-    setLoading(true);
-    setError(null);
-    setResponse(null);
     try {
-      console.log("datas", datas)
-      const { data } = await axios.post(
-        `https://api.openai.com/v1/engines/${model}/completions`,
-        datas,
-        { headers }
+      const response = await axios.post(
+        `/api/openai`,
+        data
       );
-      console.log("data", data)
-      setResponse(data);
+      console.log("response", response);
+      setResponse(response.data);
     } catch (err) {
-      console.log("err", err)
-      setError(err);
+      console.log("err", err);
+      // setError(err);
     }
+
+   
     setLoading(false);
   };
 
- 
+  const handleGenerate2 = async () => {
+    setLoading(true);
+    const prompt = `Genera una rutina de ejercicio para mí durante 2 días. Soy una mujer de 30 años, peso 60 kg, mido 1.60 m, soy sedentaria, quiero perder peso. Me regresas la rutina en un formato de Json por dia y que sea por dia.`;
+    const maxTokens = 1000;
+    const temperature = 0.9;
+    const topP = 1;
+
+    const n = 1;
+
+    const data = {
+      prompt,
+      maxTokens,
+      n,
+      temperature,
+      topP,
+    }
+    try {
+      const response = await axios.post(
+        `/api/openai`,
+        data
+      );
+      console.log("response", response);
+      setResponse2(response.data);
+    } catch (err) {
+      console.log("err", err);
+      // setError(err);
+    }
+  };
 
   return (
     <AdminLayout title="Usuarios">
@@ -199,19 +217,73 @@ const AdminUsersShowPage = () => {
                               </div>
                             </dl>
                           </div>
-                          <div className="border-t border-gray-200 px-4 py-5 sm:px-6">
+                          <div className="border-t border-gray-400 px-4 py-5 sm:px-6">
                             {/* Boton para dispara handleGenerate */}
+                                  <div className="flex flex-col flex-wrap">
+                                  <TextField
+                              id="filled-basic" variant="filled"
+                              label="Edad"
+                              type="number"
+                              value={age}
+                              margin="normal"
+                              onChange={(e) => setAge(e.target.value)}
+                            />
+                            <TextField
+                              id="filled-basic" variant="filled"
+                              type="number"
+                              label="Peso (kg)"
+                              value={weight}
+                              margin="normal"
+                              onChange={(e) => setWeight(e.target.value)}
+                            />
+                            <TextField
+                              id="filled-basic" variant="filled"
+                              type="number"
+                              label="Altura (cm)"
+                              value={height}
+                              margin="normal"
+                              onChange={(e) => setHeight(e.target.value)}
+                            />
+                            <FormControl>
+  <FormLabel id="demo-controlled-radio-buttons-group">Genero</FormLabel>
+  <RadioGroup
+    aria-labelledby="demo-controlled-radio-buttons-group"
+    name="controlled-radio-buttons-group"
+    value={gender}
+    onChange={(e) => setGender(e.target.value)}
+  >
+    <FormControlLabel value="Mujer" control={<Radio />} label="Mujer" />
+    <FormControlLabel value="Hombre" control={<Radio />} label="Hombre" />
+  </RadioGroup>
+</FormControl>
+                            
+
+
                             <button
                               onClick={handleGenerate}
                               type="button"
-                              className="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mb-4"
+                              className="inline-flex items-center mt-2 px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mb-4"
                             >
-                              Generar texto
+                              Generar Dieta
                             </button>
                               {/* mostrar texto generado */}
                             <div className="text-sm text-gray-900">
                               {response}
                               </div>
+
+                              <button
+                              onClick={handleGenerate2}
+                              type="button"
+                              className="inline-flex items-center mt-2 px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mb-4"
+                            >
+                              Generar Rutina
+                            </button>
+                              {/* mostrar texto generado */}
+                            <div className="text-sm text-gray-900">
+                              {response2}
+                              </div>
+
+                                  </div>
 
                           </div>
                         </div>

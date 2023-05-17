@@ -1,5 +1,7 @@
 import {MongoClient} from "mongodb"
 import { ObjectId } from "mongodb";
+import getCloudinary from "@/config/cloudinary";
+
 
 
 export default async function handler (req, res){
@@ -11,6 +13,8 @@ export default async function handler (req, res){
              //crear una publicacion nueva para el usuario especificado y la fecha y hora actual
         case "POST":
             const {owner,title,txt,tiempo,name} = body;
+            console.log("body", body)
+
             var {img} = body;
             if (!img){
                  img = `https://avatars.dicebear.com/api/micah/${owner}.svg?background=%23ffffff`
