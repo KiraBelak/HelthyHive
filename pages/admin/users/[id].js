@@ -7,6 +7,7 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import { unixToFormat } from "@/utils/dates";
 import { TextField, FormControl, FormLabel, RadioGroup, FormControlLabel, Radio } from "@mui/material";
+import toast, { Toaster } from "react-hot-toast";
 
 
 const AdminUsersShowPage = () => {
@@ -64,12 +65,15 @@ const AdminUsersShowPage = () => {
     topP,
   }
     try {
+      toast.loading("Generando dieta...");
       const response = await axios.post(
         `/api/openai`,
         data
       );
       console.log("response", response);
       setResponse(response.data);
+      toast.dismiss();
+      toast.success("Dieta generada");
     } catch (err) {
       console.log("err", err);
       // setError(err);
@@ -96,12 +100,16 @@ const AdminUsersShowPage = () => {
       topP,
     }
     try {
+      toast.loading("Generando rutina...");
       const response = await axios.post(
         `/api/openai`,
         data
       );
       console.log("response", response);
       setResponse2(response.data);
+      //limpiar el toast
+      toast.dismiss();
+      toast.success("Rutina generada");
     } catch (err) {
       console.log("err", err);
       // setError(err);
@@ -110,6 +118,7 @@ const AdminUsersShowPage = () => {
 
   return (
     <AdminLayout title="Usuarios">
+      <Toaster />
       <div className="w-full flex justify-center">
         <div className="relative bg-white w-full ">
           <div>
