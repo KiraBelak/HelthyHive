@@ -49,7 +49,31 @@ const AdminUsersShowPage = () => {
 
   const handleGenerate = async () => {
     setLoading(true);
-  const prompt = `Genera una dieta para mí durante 2 días. Soy una mujer de 30 años, peso 60 kg, mido 1.60 m, soy sedentaria, quiero perder peso y soy alérgica a la lactosa. Me regresas la dieta en un formato de Json por dia y que sea por dia.`;
+  const prompt = `
+  Actuaras como un nutriologo con 30 años de experiencia que da dietas en Json.Deberas darme la informacion en un Json valido y solamente el json ningun mensaje mas. El Json debe de seguir el siguiente formato:
+  {
+    "dia1": {
+      "desayuno": {
+        "plato 1": "",
+        "plato 2": ""
+      },
+      "comida": {
+        "plato 1": "",
+        "plato 2": ""
+      },
+      "cena": {
+        "plato 1": "",
+        "plato 2": ""
+      },
+      "colaciones": {
+        "plato 1": "",
+        "plato 2": ""
+      },
+    },
+  }
+  Debera ser en español. Y debe ser un Json valido.
+  Dame una dieta para mí durante 2 días. Soy una mujer de 30 años, peso 60 kg, mido 1.60 m, soy sedentaria, quiero perder peso y soy alérgica a la lactosa. Me regresas la dieta en un formato de Json por dia y que sea por dia.
+  Te recuerdo que solo debes responder el json valido. No debes de poner ningun mensaje mas ni espacios demas debe ser solo un JSON VALIDO.`;
   const maxTokens = 1000;
   const temperature = 0.9;
   const topP = 1;
@@ -70,12 +94,24 @@ const AdminUsersShowPage = () => {
         `/api/openai`,
         data
       );
-      console.log("response", response);
+      console.log("response.data", response.data);
+      //parsear la respuesta
+      const dieta = JSON.parse(response.data);
+      console.log("parsedResponse", dieta);
+      //mandar la respuesta al backend con el email del usuario
+      const email = user.email;
+      const res = await axios.post(
+        `/api/diets`,
+        {email, dieta}
+      )
+      console.log("res", res);
       setResponse(response.data);
       toast.dismiss();
       toast.success("Dieta generada");
     } catch (err) {
       console.log("err", err);
+      toast.dismiss();
+      toast.error("Error al generar dieta");
       // setError(err);
     }
 
@@ -85,7 +121,7 @@ const AdminUsersShowPage = () => {
 
   const handleGenerate2 = async () => {
     setLoading(true);
-    const prompt = `Genera una rutina de ejercicio para mí durante 2 días. Soy una mujer de 30 años, peso 60 kg, mido 1.60 m, soy sedentaria, quiero perder peso. Me regresas la rutina en un formato de Json por dia y que sea por dia.`;
+    const prompt = `Genera una rutina de ejercicio progresivo para mí durante 2 días. Soy una mujer de 30 años, peso 60 kg, mido 1.60 m, soy sedentaria, quiero perder peso. Me regresas la rutina en un formato de Json por dia y que sea por dia.`;
     const maxTokens = 1000;
     const temperature = 0.9;
     const topP = 1;
@@ -106,19 +142,24 @@ const AdminUsersShowPage = () => {
         data
       );
       console.log("response", response);
-      setResponse2(response.data);
+      //parsear la respuesta
+      const parsedResponse = JSON.parse(response.data);
+      console.log("parsedResponse", parsedResponse);
+      setResponse2(parsedResponse);
       //limpiar el toast
       toast.dismiss();
       toast.success("Rutina generada");
     } catch (err) {
       console.log("err", err);
+      toast.dismiss();
+      toast.error("Error al generar rutina");
       // setError(err);
     }
   };
 
   return (
     <AdminLayout title="Usuarios">
-      <Toaster />
+      {/* <Toaster /> */}
       <div className="w-full flex justify-center">
         <div className="relative bg-white w-full ">
           <div>
@@ -281,15 +322,15 @@ const AdminUsersShowPage = () => {
                               </div>
 
                               <button
-                              onClick={handleGenerate2}
+                              // onClick={handleGenerate2}
                               type="button"
+                              disabled
                               className="inline-flex items-center mt-2 px-2.5 py-1.5 border border-transparent text-xs font-medium rounded shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 mb-4"
                             >
                               Generar Rutina
                             </button>
                               {/* mostrar texto generado */}
                             <div className="text-sm text-gray-900">
-                              {response2}
                               </div>
 
                                   </div>

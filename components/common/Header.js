@@ -17,7 +17,7 @@ const Header = () => {
   const { data: session } = useSession();
   //this is the random avatar generator
 
-  console.log(session);
+  // console.log(session);
   return (
     <Popover className="relative bg-salud-primary">
       <div

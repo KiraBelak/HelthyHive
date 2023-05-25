@@ -1,6 +1,6 @@
 import axios from "axios";
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
-const model = "text-davinci-002";
+const model = "text-davinci-003";
 
 const headers = {
     "Content-Type": "application/json",
