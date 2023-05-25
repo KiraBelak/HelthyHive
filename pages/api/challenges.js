@@ -11,7 +11,6 @@ export default async function handler(req, res) {
     //const existingChallenge = await profile.findOne({ email: body.email });
     switch (method) {
         case "POST":
-
             const newChallenge = {
                 title:body.title,
                 subtitle:body.subtitle,
@@ -19,6 +18,8 @@ export default async function handler(req, res) {
                 status:body.status,
                 tasks:body.tasks
             };
+
+            
 
             console.log("ESTA AQUI");
             const answer = await challenge.insertOne(newChallenge);

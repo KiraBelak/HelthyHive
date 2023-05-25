@@ -4,35 +4,65 @@ import { useEffect } from "react";
 import { Container } from "@mui/material";
 import React, { useState } from 'react';
 import Select from "react-select";
+//traer la sesion del usuario para poder obtener el email
+import { useSession } from "next-auth/react";
+import toast, { Toaster } from "react-hot-toast";
 
 
 export default function Demo() {
-
     const [diseases, setDiseases] = useState([]);
     const [email, setEmail] = useState(""); // AQUI HAY QUE ASIGNAR EL EMAIL CUANDO YA TOCA EL LINK DE VERIFICACION
     const [age, setAge] = useState("");
     const [weight, setWeight] = useState("");
     const [height, setHeight] = useState("");
-    const [imc, setImc] = useState("");
     const [regimen, setRegimen] = useState("");
-    const [sedentary, setSedentary] = useState(true);
+    const [sedentary, setSedentary] = useState(false);
+    const { data: session } = useSession();
+
+    useEffect(() => {
+        if (session) {
+            setEmail(session.user.email);
+            //hacer un get para traer los datos del perfil
+            //si no existe el perfil, entonces se omite el get
+            //si existe el perfil, entonces se hace un set de los datos del perfil
+            const getProfile = async () => {
+                const answ = await axios.get("/api/profile", { params: { email: session.user.email } });
+                console.log(answ.data);
+                if (answ.data.length > 0) {
+                    setAge(answ.data[0].age);
+                    setWeight(answ.data[0].weight);
+                    setHeight(answ.data[0].height);
+                    setRegimen(answ.data[0].regimen);
+                    setSedentary(answ.data[0].sedentary);
+                }
+            }
+            getProfile();
+        }
+    }, [session]);
 
     const handleDiseasesChange = (selectedOptions) => {
-        const selectedDiseases = selectedOptions.map((option) => option.value);
-        setDiseases(selectedDiseases);
+        console.log("selectedOptions", selectedOptions);
+        //guardar las enfermedades en un array
+        const diseases = selectedOptions.map((option) => option.value);
+        // console.log("diseases", diseases);
+        setDiseases(diseases);
+
+        
     };
 
     const handleSubmit = (event) => {
         event.preventDefault();
 
 
-        const imcValue = (weight / (height * height)).toFixed(2);
-
-        imc = imcValue;
+       //calcular el imc
+        const imc = weight / (height * height);
+        console.log("imc", imc);
 
         sedentary = Boolean(sedentary);
        
-        console.log({
+        console.log(
+            "la data es:"
+            ,{
             diseases,
             email,
             age,
@@ -65,28 +95,34 @@ export default function Demo() {
         { value: "Cardiovascular", label: "Enfermedad cardiovascular" },
         { value: "Anemia", label: "Anemia" },
         { value: "Osteoporosis", label: "Osteoporosis" },
-    ];
 
+        
+    ];
 
     //Funcionando 
     async function postProfile(data) {
         
     
         const resp = await axios.post("/api/profile", data).then(response => {
+            toast.success("Perfil creado con exito");
             console.log("EXITO!", response);
 
         }).catch(error => {
-
-            console.error(error);
+            if (!(error.response.status == 409)) {
+            toast.error("Error al crear el perfil");
+            }else{
+                toast.loading("El perfil ya existe, se procedera a actualizarlo");
+                editProfiles(data);
+            }
+            
         })
 
-        console.log(resp);
-
+        console.log("salio del post")
     }
 
     //PRUEBA
     async function getProfiles() {
-        const email = "linux39@live.com";
+        // const email = "linux39@live.com";
         let info;
         const resp = await axios.get(`/api/profile?email=${email}`).then(response => {
             console.log("encontrado", response);
@@ -101,22 +137,26 @@ export default function Demo() {
     }
 
     //PRUEBA
-    async function editProfiles() {
-        const email = "linux34@live.com";
-        const data2 = {
-            email: email,
-            age: 8888888,
-            weight: 70,
-            height: 77,
-            imc: 77,
-            disease: ["none", "alterado"],
-            regimen: "balanced",
-            sedentary: false
-        };
+    async function editProfiles(data) {
+        // const email = "linux34@live.com";
+        // const data2 = {
+        //     email: email,
+        //     age: 8888888,
+        //     weight: 70,
+        //     height: 77,
+        //     imc: 77,
+        //     disease: ["none", "alterado"],
+        //     regimen: "balanced",
+        //     sedentary: false
+        // };
 
-        const resp = await axios.put(`/api/profile?email=${email}`, data2).then(response => {
+        const resp = await axios.put(`/api/profile?email=${data.email}`, data).then(response => {
+            toast.dismiss();
+            toast.success("Perfil actualizado con exito");
             console.log(response);
         }).catch(err => {
+            toast.dismiss();
+            toast.error("Error al actualizar el perfil");
             console.log(err);
         });
 
@@ -135,7 +175,7 @@ export default function Demo() {
 
     return (
         <div className="min-h-screen w-screen box-border bg-gradient-to-br from-[#5D9F6B] via-[#3B7DE5] to-[#F097D1]">
-
+            <Toaster position="bottom-center" reverseOrder={false} />
             <div className="min-h-full min-w-screen flex justify-center items-center">
                 <div className=" flex flex-col w-full box-border justify-center items-center py-12 lg:flex-none">
                     <div className="relative text-white mb-2">
@@ -204,7 +244,8 @@ export default function Demo() {
                                         <label htmlFor="diseases" className="block font-medium text-gray-700">
                                             Enfermedades
                                         </label>
-                                        <Select required id="diseases" name="diseases" options={options} isMulti onChange={handleDiseasesChange}
+                                        <Select id="diseases" name="diseases" options={options} isMulti onChange={handleDiseasesChange}
+                                            placeholder="Selecciona tus enfermedades"
                                             value={diseases.map((disease) => ({
                                                 value: disease,
                                                 label: disease,

@@ -13,7 +13,7 @@ export default async function handler(req, res) {
         case "POST":
 
             if (existingProfile) {
-                return res.status(404).json({ message: "Este email ya está registrado" });
+                return res.status(409).json({ message: "Este email ya está registrado" });
             }
 
             const newProfile = {
@@ -47,8 +47,9 @@ export default async function handler(req, res) {
             break;
 
         case "PUT":
-            if (existingProfile) {
-                return res.status(409).json({ message: "Este email no ha sido registrado" });
+            console.log("ESTA AQUI enputado");
+            if (!existingProfile) {
+                return res.status(201).json({ message: "Este email no existe" });
             }
 
             const editProfile = {

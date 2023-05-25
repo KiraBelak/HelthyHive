@@ -9,10 +9,36 @@ import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
 import classNames from "@/utils/classNames";
 import { faPeopleLine } from "@fortawesome/free-solid-svg-icons";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const AccountLayout = ({ title, children, ...props }) => {
+  const [profile , setProfile] = useState(false);//[age, setAge] = useState(0);
   const router = useRouter();
   const { status } = useSession();
+  const {data:session}=useSession();
+  useEffect(() => {
+    if (session) {
+        //hacer un get para traer los datos del perfil
+        //si no existe el perfil, entonces se omite el get
+        //si existe el perfil, entonces se hace un set de los datos del perfil
+        const getProfile = async () => {
+            const answ = await axios.get("/api/profile", { params: { email: session.user.email } });
+            console.log(answ.data);
+            if (answ.data.length > 0) {
+              setProfile(true);
+            }else
+            {
+              setProfile(null);
+            }
+        }
+        getProfile();
+    }
+}, [session]);
+
+
+
+
 
   const navigation = [
 
@@ -63,10 +89,17 @@ const AccountLayout = ({ title, children, ...props }) => {
         <title>{title ? `Mi Cuenta | ${title}` : "Mi Cuenta"}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
       <div className="min-h-full h-full">
         <div className="flex flex-col w-full bg-gray-100 " {...props}>
           <Header />
+          {!(profile===null) ? null : <div className="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4" role="alert">
+            <p className="font-bold">¡Atención!</p>
+            <p>Para poder acceder a todas las funcionalidades de la plataforma, es necesario que completes tu perfil.</p>
+            <Link href="/profiledata">
+              <a className="text-yellow-700 underline">Completar perfil</a>
+            </Link>
+            </div>
+              }
           <div className="w-full max-w-7xl  mx-auto  ">
             <div className="max-w-7xl w-full py-6 sm:px-6  ">
               <div className="lg:grid lg:grid-cols-12 lg:gap-x-5">
@@ -74,6 +107,7 @@ const AccountLayout = ({ title, children, ...props }) => {
                   <div className="layouttitle  w-full flex items-center justify-start pb-2">
                     <p className="font-bold">Mi Cuenta</p>
                   </div>
+                  
                   <nav className="space-y-1">
                     {navigation.map((item) => {
                       if (item.href === router.pathname) {
@@ -106,6 +140,7 @@ const AccountLayout = ({ title, children, ...props }) => {
                     })}
                   </nav>
                 </aside>
+               
 
                 <div className="space-y-6 sm:px-6 lg:px-0 lg:col-span-9">
                   {children}

@@ -57,7 +57,7 @@ const AdminUsersShowPage = () => {
         "plato 1": "",
         "plato 2": ""
       },
-      "comida": {
+      "comida": { 
         "plato 1": "",
         "plato 2": ""
       },
