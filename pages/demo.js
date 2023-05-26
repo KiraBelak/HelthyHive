@@ -8,18 +8,7 @@ export default function Home() {
   const [areas, setAreas] = useState(null);
   const [timeStampNow, setTimeStampNow] = useState(dateNowUnix());
 
-  const getAreas = async () => {
-    try {
-      const { data: areas } = await axios.get("/api/areas");
-      setAreas(areas);
-    } catch (error) {
-      console.log("error getting areas:", error);
-    }
-  };
-
-  useEffect(() => {
-    getAreas();
-  }, []);
+ 
 
   //TODO: move this function to a lib file or something
   const isAreaAvailable = (areaId) => {
