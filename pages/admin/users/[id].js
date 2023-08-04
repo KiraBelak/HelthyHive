@@ -34,6 +34,8 @@ const AdminUsersShowPage = () => {
       try {
         const { data } = await axios.get(`/api/admin/users/${id}`);
         setUser(data);
+        // traer 
+
         setFetchError(false);
       } catch (err) {
         setFetchError(true);
